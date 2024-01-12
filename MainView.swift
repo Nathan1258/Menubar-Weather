@@ -1,0 +1,341 @@
+//
+//  MainView.swift
+//  WeatherApp
+//
+//  Created by Nathan Ellis on 01/01/2023.
+//
+
+import SwiftUI
+import WeatherKit
+import CoreLocation
+
+func localisedTemp(tempInCelsius: Double, isCelsius: Bool) -> String{
+    if isCelsius {
+        return String(tempInCelsius).roundedTemp() + "℃"
+    }
+    let fahrenheitTemp = (tempInCelsius * 1.8) + 32
+    return String(fahrenheitTemp).roundedTemp() + "℉"
+}
+
+struct MainView: View {
+    
+    @StateObject private var locationManager = LocationManager()
+    
+    @StateObject private var weatherUpdater: WeatherUpdater
+
+    init() {
+        let locationManager = LocationManager()
+        _locationManager = StateObject(wrappedValue: locationManager)
+        _weatherUpdater = StateObject(wrappedValue: WeatherUpdater(locationManager: locationManager))
+    }
+    
+    @State var showSettings: Bool = false
+    @AppStorage("showBackground") var showBackground: Bool = true
+    @AppStorage("IsCelsius") var isCelsius: Bool = true
+    @AppStorage("showIcon") var showIcon: Bool = true
+    @State var error: String = ""
+    
+    @State var previewNum: Int = 1
+    
+    var body: some View {
+        if showSettings{
+            SettingsView(showSettings: $showSettings)
+        }else{
+            VStack{
+                if error.isEmpty{
+                    if let weather = weatherUpdater.weather, let _ = weatherUpdater.hourlyWeather, let _ = weatherUpdater.locationPlacemark{
+                        ZStack{
+                            if showBackground{
+                                GetBackground(condition: weather.currentWeather.condition, isDaylight: weather.currentWeather.isDaylight).ignoresSafeArea()
+                                
+                            }
+                            VStack{
+                                Top(weather: $weatherUpdater.weather, locationPlacemark: $weatherUpdater.locationPlacemark)
+                                    .padding()
+                                Divider()
+                                    .padding(.horizontal)
+                                HourlyForcast(weather: $weatherUpdater.weather, hourlyWeather: $weatherUpdater.hourlyWeather)
+                                    .padding()
+                                Divider()
+                                    .padding(.horizontal)
+                                WeeklyForcast(weather: $weatherUpdater.weather)
+                                    .padding()
+                                Divider()
+                                    .padding(.horizontal)
+                                Bottom(weather: $weatherUpdater.weather, showSettings: $showSettings)
+                                    .padding()
+                                Button(action: {
+                                    guard let url = URL(string: "https://weatherkit.apple.com/legal-attribution.html") else {return}
+                                    NSWorkspace.shared.open(url)
+                                }){
+                                    Text("Sourced from  Weather")
+                                        .font(.caption)
+                                        .foregroundColor(.white)
+                                }.buttonStyle(.link)
+                                    .padding(.bottom)
+                            }
+                            .frame(width: 400)
+                        }
+                        .frame(width: 400)
+                    }else{
+                        Spacer()
+                        VStack{
+                            Text("Two seconds...")
+                                .font(.largeTitle)
+                                .bold()
+                            Text("We're fetching your current weather")
+                                .font(.subheadline)
+                                .bold()
+                            ProgressView()
+                            
+                        }
+                        .frame(width: 400, height: 400)
+                        .padding()
+                    }
+                }else{
+                    Spacer()
+                    VStack{
+                        Text("We're having some troubles")
+                            .font(.largeTitle)
+                            .bold()
+                        Text("Make sure your WiFi and location services are on for this app.")
+                            .font(.subheadline)
+                            .bold()
+                    }
+                    .frame(width: 400, height: 400)
+                    .padding()
+                }
+            }.task {
+                weatherUpdater.fetchData()
+            }
+        }
+    }
+}
+
+
+struct TaskId: Equatable{
+    var location: CLLocation?
+    var showIcon: Bool
+    var currentWeather: CurrentWeather?
+}
+
+struct Top: View{
+    
+    @Binding var weather: Weather?
+    @Binding var locationPlacemark: CLPlacemark?
+    
+    @AppStorage("IsCelsius") var isCelsius: Bool = true
+    
+    var body: some View{
+        HStack{
+            VStack(alignment: .leading){
+                Text(locationPlacemark!.locality ?? "")
+                    .foregroundColor(.white)
+                    .font(.title)
+                    .bold()
+                Text(locationPlacemark!.country ?? "")
+                    .foregroundColor(.white)
+                    .font(.subheadline)
+                    .opacity(0.6)
+                Text(weather!.currentWeather.condition.description)
+                    .foregroundColor(.white)
+                    .font(.title3)
+                    .bold()
+                    .padding(.top)
+            }
+            Spacer()
+            HStack{
+                Text(localisedTemp(tempInCelsius: weather!.currentWeather.temperature.value, isCelsius: isCelsius))
+                    .foregroundColor(.white)
+                    .font(.title)
+                    .bold()
+                
+                GetIcon(condition: weather!.currentWeather.condition, isDaylight: weather!.currentWeather.isDaylight)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 65, height: 50)
+            }
+        }
+    }
+}
+
+// MARK: Hourly View
+struct HourlyForcast: View{
+    
+    @Binding var weather: Weather?
+    @Binding var hourlyWeather: Forecast<HourWeather>?
+    @AppStorage("IsCelsius") var isCelsius: Bool = true
+    
+    var body: some View{
+        HStack(spacing: 16){
+            ForEach((hourlyWeather?.forecast.prefix(7))!, id: \.self.date){ hour in
+                HourlyForcastItem(time: hour.date, temp: localisedTemp(tempInCelsius: hour.temperature.value, isCelsius: isCelsius), weather: weather!, condition: hour.condition)
+            }
+        }
+    }
+}
+
+struct HourlyForcastItem: View {
+    
+    var time: Date
+    var temp: String
+    var weather: Weather
+    var condition: WeatherCondition
+    @AppStorage("Is24Hours") var is24Hours: Bool = false
+    
+    var body: some View {
+        VStack {
+            Text(Calendar.current.component(.hour, from: Date()).description == Calendar.current.component(.hour, from: time).description ?
+                 "Now" :
+                 (is24Hours ? convertTo12HourFormat(time) : format24HourTime(time)))
+            .foregroundColor(.white)
+            .font(.footnote)
+            GetIcon(condition: condition, isDaylight: weather.currentWeather.isDaylight)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 35, height: 35)
+            Text(temp)
+                .foregroundColor(.white)
+                .font(.callout)
+        }
+    }
+    
+    func convertTo12HourFormat(_ time: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a" // 12-hour format with AM/PM
+        let formattedTime = formatter.string(from: time)
+        return formattedTime.replacingOccurrences(of: " ", with: "")
+    }
+
+    
+    func format24HourTime(_ time: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm" // 24-hour format
+        return formatter.string(from: time)
+    }
+}
+
+
+// MARK: Weekly View
+struct WeeklyForcast: View{
+    
+    @Binding var weather: Weather?
+    @AppStorage("IsCelsius") var isCelsius: Bool = true
+    
+    var body: some View{
+        VStack(spacing: 16){
+            ForEach(weather!.dailyForecast.forecast.prefix(7), id: \.self.date){ day in
+                WeeklyForcastItem(day: day.date.dayOfWeek(), tempHigh: localisedTemp(tempInCelsius: day.highTemperature.value, isCelsius: isCelsius), tempLow: localisedTemp(tempInCelsius: day.lowTemperature.value, isCelsius: isCelsius), condition: day.condition, weather: weather!)
+            }
+        }
+    }
+}
+struct WeeklyForcastItem: View{
+    
+    var day: String
+    var tempHigh: String
+    var tempLow: String
+    var condition: WeatherCondition
+    var weather: Weather
+    
+    var body: some View{
+        HStack{
+            Text(Date().dayOfWeek() == day ? "Today" : day)
+                .foregroundColor(.white)
+                .font(.headline)
+                .bold()
+            Spacer()
+            Text(tempHigh)
+                .foregroundColor(.white)
+            Text(tempLow)
+                .foregroundColor(.white)
+                .opacity(0.6)
+            GetIcon(condition: condition, isDaylight: weather.currentWeather.isDaylight)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 20, height: 20)
+        }
+    }
+}
+
+// MARK: Extra Info
+struct Bottom: View{
+    
+    @Binding var weather: Weather?
+    @Binding var showSettings: Bool
+    
+    var body: some View{
+        VStack{
+            HStack(spacing: 16){
+                VStack(spacing: 12){
+                    Text(weather!.currentWeather.uvIndex.value.formatted())
+                        .foregroundColor(.white)
+                        .bold()
+                    Text("UV Index")
+                        .foregroundColor(.white)
+                        .opacity(0.6)
+                }
+                VStack(spacing: 12){
+                    Text("\(String(Int((Double(weather!.currentWeather.humidity.description) ?? 0.0)*100)))%")
+                        .foregroundColor(.white)
+                        .bold()
+                    Text("Humidity")
+                        .foregroundColor(.white)
+                        .opacity(0.6)
+                }
+                VStack(spacing: 12){
+                    Text(dateToTime(date: weather!.dailyForecast.first?.sun.sunrise))
+                        .foregroundColor(.white)
+                        .bold()
+                    Text("Sunrise")
+                        .foregroundColor(.white)
+                        .opacity(0.6)
+                }
+                VStack(spacing: 12){
+                    Text(dateToTime(date: weather!.dailyForecast.first?.sun.sunset))
+                        .foregroundColor(.white)
+                        .bold()
+                    Text("Sunset")
+                        .foregroundColor(.white)
+                        .opacity(0.6)
+                }
+            }
+            HStack{
+                Button(action: {
+                    showSettings.toggle()
+                }){
+                    Text("Settings")
+                }
+                Button(action: {
+                    NSApplication.shared.terminate(nil)
+                }){
+                    Text("Quit")
+                }
+            }
+        }
+    }
+}
+
+func dateToTime(date: Date?) -> String{
+    let formatter = DateFormatter()
+    formatter.dateFormat = "HH:mm"
+    if let date = date{
+        let currentTime = formatter.string(from: date)
+        return currentTime
+    }
+    return ""
+    
+}
+
+struct Preview: View{
+    var body: some View{
+        Text("Hello")
+    }
+}
+
+struct MainView_Previews: PreviewProvider {
+    static var previews: some View {
+        //        MainView()
+        Preview()
+    }
+}
