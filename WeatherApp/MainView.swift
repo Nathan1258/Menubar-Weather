@@ -137,23 +137,31 @@ struct Top: View{
                     .foregroundColor(.white)
                     .font(.subheadline)
                     .opacity(0.6)
+                Spacer()
                 Text(weather!.currentWeather.condition.description)
                     .foregroundColor(.white)
                     .font(.title3)
                     .bold()
-                    .padding(.top)
             }
             Spacer()
-            HStack{
-                Text(localisedTemp(tempInCelsius: weather!.currentWeather.temperature.value, isCelsius: isCelsius))
+            VStack(alignment: .trailing){
+                HStack{
+                    Text(localisedTemp(tempInCelsius: weather!.currentWeather.temperature.value, isCelsius: isCelsius))
+                        .foregroundColor(.white)
+                        .font(.title)
+                        .bold()
+                    
+                    GetIcon(condition: weather!.currentWeather.condition, isDaylight: weather!.currentWeather.isDaylight)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 65, height: 50)
+                }
+                Spacer()
+                Text("Feels like  " + localisedTemp(tempInCelsius: weather!.currentWeather.apparentTemperature.value, isCelsius: isCelsius))
                     .foregroundColor(.white)
-                    .font(.title)
+                    .font(.title3)
                     .bold()
-                
-                GetIcon(condition: weather!.currentWeather.condition, isDaylight: weather!.currentWeather.isDaylight)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 65, height: 50)
+                    .padding(.trailing, 7)
             }
         }
     }
@@ -167,7 +175,7 @@ struct HourlyForcast: View{
     @AppStorage("IsCelsius") var isCelsius: Bool = true
     
     var body: some View{
-        HStack(spacing: 16){
+        HStack(spacing: 20){
             ForEach((hourlyWeather?.forecast.prefix(7))!, id: \.self.date){ hour in
                 HourlyForcastItem(time: hour.date, temp: localisedTemp(tempInCelsius: hour.temperature.value, isCelsius: isCelsius), weather: weather!, condition: hour.condition)
             }
@@ -189,7 +197,7 @@ struct HourlyForcastItem: View {
                  "Now" :
                  (is24Hours ? convertTo12HourFormat(time) : format24HourTime(time)))
             .foregroundColor(.white)
-            .font(.footnote)
+            .font(.callout)
             GetIcon(condition: condition, isDaylight: weather.currentWeather.isDaylight)
                 .resizable()
                 .scaledToFit()
@@ -263,15 +271,44 @@ struct Bottom: View{
     
     @Binding var weather: Weather?
     @Binding var showSettings: Bool
+    @AppStorage("IsCelsius") var isCelsius: Bool = true
     
     var body: some View{
-        VStack{
+        VStack(spacing: 16){
+//            HStack(spacing: 16){
+//                Spacer()
+//                VStack(spacing: 12){
+//                    Text(localisedTemp(tempInCelsius: weather!.currentWeather.apparentTemperature.value, isCelsius: isCelsius))
+//                        .foregroundColor(.white)
+//                        .bold()
+//                    Text("Feels like")
+//                        .foregroundColor(.white)
+//                        .opacity(0.6)
+//                }
+//                VStack(spacing: 12){
+//                    Text(weather!.currentWeather.precipitationIntensity.description)
+//                        .foregroundColor(.white)
+//                        .bold()
+//                    Text("Precipitation")
+//                        .foregroundColor(.white)
+//                        .opacity(0.6)
+//                }
+//                Spacer()
+//            }
             HStack(spacing: 16){
                 VStack(spacing: 12){
-                    Text(weather!.currentWeather.uvIndex.value.formatted())
+                    Text(weather!.currentWeather.uvIndex.value.description)
                         .foregroundColor(.white)
                         .bold()
                     Text("UV Index")
+                        .foregroundColor(.white)
+                        .opacity(0.6)
+                }
+                VStack(spacing: 12){
+                    Text(weather!.currentWeather.dewPoint.value.description)
+                        .foregroundColor(.white)
+                        .bold()
+                    Text("Dew Point")
                         .foregroundColor(.white)
                         .opacity(0.6)
                 }

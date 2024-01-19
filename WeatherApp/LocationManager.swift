@@ -23,6 +23,7 @@ class LocationManager: NSObject, ObservableObject{
         
     }
 }
+
 extension LocationManager: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
@@ -56,6 +57,7 @@ extension LocationManager: CLLocationManagerDelegate{
                 completion(placemark)
             }
         }
+    
     func getLocation(for address: String) async throws -> CLLocation? {
         let placemarks = try await CLGeocoder().geocodeAddressString(address)
         return placemarks.first?.location
