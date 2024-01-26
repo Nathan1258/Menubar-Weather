@@ -63,7 +63,9 @@ struct MainView: View {
                                 Divider()
                                     .padding(.horizontal)
                                 Bottom(weather: $weatherUpdater.weather, showSettings: $showSettings)
-                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.top, 12)
+                                    .padding(.horizontal, 12)
                                 Button(action: {
                                     guard let url = URL(string: "https://weatherkit.apple.com/legal-attribution.html") else {return}
                                     NSWorkspace.shared.open(url)
@@ -275,68 +277,56 @@ struct Bottom: View{
     
     var body: some View{
         VStack(spacing: 16){
-//            HStack(spacing: 16){
-//                Spacer()
-//                VStack(spacing: 12){
-//                    Text(localisedTemp(tempInCelsius: weather!.currentWeather.apparentTemperature.value, isCelsius: isCelsius))
-//                        .foregroundColor(.white)
-//                        .bold()
-//                    Text("Feels like")
-//                        .foregroundColor(.white)
-//                        .opacity(0.6)
-//                }
-//                VStack(spacing: 12){
-//                    Text(weather!.currentWeather.precipitationIntensity.description)
-//                        .foregroundColor(.white)
-//                        .bold()
-//                    Text("Precipitation")
-//                        .foregroundColor(.white)
-//                        .opacity(0.6)
-//                }
-//                Spacer()
-//            }
-            HStack(spacing: 16){
-                VStack(spacing: 12){
+            HStack(spacing: 16) {
+                VStack(spacing: 12) {
                     Text(weather!.currentWeather.uvIndex.value.description)
                         .foregroundColor(.white)
                         .bold()
                     Text("UV Index")
                         .foregroundColor(.white)
                         .opacity(0.6)
+                        .lineLimit(1)
                 }
-                VStack(spacing: 12){
+                VStack(spacing: 12) {
                     Text(weather!.currentWeather.dewPoint.value.description)
                         .foregroundColor(.white)
                         .bold()
                     Text("Dew Point")
                         .foregroundColor(.white)
                         .opacity(0.6)
+                        .lineLimit(1)
                 }
-                VStack(spacing: 12){
+                VStack(spacing: 12) {
                     Text("\(String(Int((Double(weather!.currentWeather.humidity.description) ?? 0.0)*100)))%")
                         .foregroundColor(.white)
                         .bold()
                     Text("Humidity")
                         .foregroundColor(.white)
                         .opacity(0.6)
+                        .lineLimit(1)
                 }
-                VStack(spacing: 12){
+                VStack(spacing: 12) {
                     Text(dateToTime(date: weather!.dailyForecast.first?.sun.sunrise))
                         .foregroundColor(.white)
                         .bold()
                     Text("Sunrise")
                         .foregroundColor(.white)
                         .opacity(0.6)
+                        .lineLimit(1)
                 }
-                VStack(spacing: 12){
+                VStack(spacing: 12) {
                     Text(dateToTime(date: weather!.dailyForecast.first?.sun.sunset))
                         .foregroundColor(.white)
                         .bold()
                     Text("Sunset")
                         .foregroundColor(.white)
                         .opacity(0.6)
+                        .lineLimit(1)
+                        
                 }
-            }
+            }.minimumScaleFactor(0.5)
+
+
             HStack{
                 Button(action: {
                     showSettings.toggle()

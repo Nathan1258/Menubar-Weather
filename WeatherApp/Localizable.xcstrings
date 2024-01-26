@@ -1,0 +1,201 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@%%" : {
+
+    },
+    "Dew Point" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taupunkt"
+          }
+        }
+      }
+    },
+    "Hello" : {
+
+    },
+    "Humidity" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feuchtigkeit"
+          }
+        }
+      }
+    },
+    "Launch MenuBar Weather at login" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starten Sie MenuBar Weather beim Anmelden"
+          }
+        }
+      }
+    },
+    "Make sure your WiFi and location services are on for this app." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stellen Sie sicher, dass Ihr WLAN und Ihre Ortungsdienste für diese App aktiviert sind."
+          }
+        }
+      }
+    },
+    "Quit" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufhören"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "comment" : "Settings button",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        }
+      }
+    },
+    "Show a weather icon aside the temperature" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neben der Temperatur wird ein Wettersymbol angezeigt"
+          }
+        }
+      }
+    },
+    "Show gradient background based on current weather" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeigen Sie den Verlaufshintergrund basierend auf dem aktuellen Wetter an"
+          }
+        }
+      }
+    },
+    "Sourced from  Weather" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quelle:  Wetter"
+          }
+        }
+      }
+    },
+    "Sunrise" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonnenaufgang"
+          }
+        }
+      }
+    },
+    "Sunset" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonnenuntergang"
+          }
+        }
+      }
+    },
+    "Today" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heute"
+          }
+        }
+      }
+    },
+    "Two seconds..." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zwei sekunden..."
+          }
+        }
+      }
+    },
+    "Use 12-hour time format" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verwenden Sie das 12-Stunden-Zeitformat"
+          }
+        }
+      }
+    },
+    "Use Celsius instead of Fahrenheit" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verwenden Sie Celsius statt Fahrenheit"
+          }
+        }
+      }
+    },
+    "UV Index" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UV-Index"
+          }
+        }
+      }
+    },
+    "We're fetching your current weather" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wir rufen Ihr aktuelles Wetter ab"
+          }
+        }
+      }
+    },
+    "We're having some troubles" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wir haben einige Probleme"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

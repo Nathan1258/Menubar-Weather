@@ -17,6 +17,7 @@
 		D8A960FD2960B17E00CC5D35 /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A960FC2960B17E00CC5D35 /* WeatherAppApp.swift */; };
 		D8A961012960B17F00CC5D35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A961002960B17F00CC5D35 /* Assets.xcassets */; };
 		D8A961042960B17F00CC5D35 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A961032960B17F00CC5D35 /* Preview Assets.xcassets */; };
+		D8B8F4B82B63DC5500211C4F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D8B8F4B72B63DC5500211C4F /* Localizable.xcstrings */; };
 		D8E440E829E44EFC003544EA /* WeatherUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E440E729E44EFC003544EA /* WeatherUpdater.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		D8A961002960B17F00CC5D35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8A961032960B17F00CC5D35 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D8A961052960B17F00CC5D35 /* WeatherApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeatherApp.entitlements; sourceTree = "<group>"; };
+		D8B8F4B72B63DC5500211C4F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		D8E440E729E44EFC003544EA /* WeatherUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUpdater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +69,7 @@
 		D8A960FB2960B17E00CC5D35 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				D8B8F4B72B63DC5500211C4F /* Localizable.xcstrings */,
 				D836E0112961EC5400283355 /* Info.plist */,
 				D8A960FC2960B17E00CC5D35 /* WeatherAppApp.swift */,
 				D8A961002960B17F00CC5D35 /* Assets.xcassets */,
@@ -136,6 +139,8 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				es,
 			);
 			mainGroup = D8A960F02960B17E00CC5D35;
 			packageReferences = (
@@ -157,6 +162,7 @@
 			files = (
 				D8A961042960B17F00CC5D35 /* Preview Assets.xcassets in Resources */,
 				D8A961012960B17F00CC5D35 /* Assets.xcassets in Resources */,
+				D8B8F4B82B63DC5500211C4F /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
