@@ -159,7 +159,10 @@ struct Top: View{
                         .frame(width: 65, height: 50)
                 }
                 Spacer()
-                Text("Feels like  " + localisedTemp(tempInCelsius: weather!.currentWeather.apparentTemperature.value, isCelsius: isCelsius))
+                HStack(spacing:6){
+                    Text("Feels like")
+                    Text(localisedTemp(tempInCelsius: weather!.currentWeather.apparentTemperature.value, isCelsius: isCelsius))
+                }
                     .foregroundColor(.white)
                     .font(.title3)
                     .bold()

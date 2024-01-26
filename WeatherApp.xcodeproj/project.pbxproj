@@ -19,7 +19,6 @@
 		D8BA2D812B63EF4E00B59E7F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D294A2963544D005CA6AB /* SettingsView.swift */; };
 		D8BA2D822B63EF4E00B59E7F /* WeatherUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E440E729E44EFC003544EA /* WeatherUpdater.swift */; };
 		D8BA2D832B63EFBB00B59E7F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A961032960B17F00CC5D35 /* Preview Assets.xcassets */; };
-		D8F8D8472B640CEC002ADE49 /* WeatherApp.entitlements in Sources */ = {isa = PBXBuildFile; fileRef = D8BA2D7A2B63EE7900B59E7F /* WeatherApp.entitlements */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -174,7 +173,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8F8D8472B640CEC002ADE49 /* WeatherApp.entitlements in Sources */,
 				D8BA2D7B2B63EF4E00B59E7F /* WeatherAppApp.swift in Sources */,
 				D8BA2D7C2B63EF4E00B59E7F /* MainView.swift in Sources */,
 				D8BA2D7D2B63EF4E00B59E7F /* LocationManager.swift in Sources */,

@@ -14,8 +14,37 @@
         }
       }
     },
+    "Feels like" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gefühlt"
+          }
+        }
+      }
+    },
+    "Friday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Freitag"
+          }
+        }
+      }
+    },
     "Hello" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hallo"
+          }
+        }
+      }
     },
     "Humidity" : {
       "localizations" : {
@@ -27,12 +56,15 @@
         }
       }
     },
+    "Key" : {
+      "extractionState" : "manual"
+    },
     "Launch MenuBar Weather at login" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Starten Sie MenuBar Weather beim Anmelden"
+            "value" : "Starte MenuBar Weather bei Login"
           }
         }
       }
@@ -42,7 +74,29 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stellen Sie sicher, dass Ihr WLAN und Ihre Ortungsdienste für diese App aktiviert sind."
+            "value" : "Bitte gib’ für diese App die WLAN- und Ortungsdienste frei."
+          }
+        }
+      }
+    },
+    "Monday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Montag"
+          }
+        }
+      }
+    },
+    "Now" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jetzt"
           }
         }
       }
@@ -52,7 +106,18 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aufhören"
+            "value" : "Beenden"
+          }
+        }
+      }
+    },
+    "Saturday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Samstag"
           }
         }
       }
@@ -80,7 +145,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Neben der Temperatur wird ein Wettersymbol angezeigt"
+            "value" : "Zeige in der Menüleiste neben der Temperatur ein Icon mit den Wetterverhältnissen"
           }
         }
       }
@@ -90,7 +155,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zeigen Sie den Verlaufshintergrund basierend auf dem aktuellen Wetter an"
+            "value" : "Passe den Hintergrund an das momentane Wetter an"
           }
         }
       }
@@ -100,7 +165,18 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quelle:  Wetter"
+            "value" : "Daten von  Weather"
+          }
+        }
+      }
+    },
+    "Sunday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonntag"
           }
         }
       }
@@ -125,6 +201,17 @@
         }
       }
     },
+    "Thursday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donnerstag"
+          }
+        }
+      }
+    },
     "Today" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -136,12 +223,23 @@
         }
       }
     },
+    "Tuesday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dienstag"
+          }
+        }
+      }
+    },
     "Two seconds..." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zwei sekunden..."
+            "value" : "Gib’ uns noch ein paar Sekunden…"
           }
         }
       }
@@ -151,7 +249,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verwenden Sie das 12-Stunden-Zeitformat"
+            "value" : "Zeige die Zeit im 12-Stunden-Format an"
           }
         }
       }
@@ -161,7 +259,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verwenden Sie Celsius statt Fahrenheit"
+            "value" : "Nutze als Temperatureinheit Celsius statt Fahrenheit"
           }
         }
       }
@@ -181,7 +279,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wir rufen Ihr aktuelles Wetter ab"
+            "value" : "Wir laden die Wetterdaten"
           }
         }
       }
@@ -191,7 +289,18 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wir haben einige Probleme"
+            "value" : "Es gibt ein paar Probleme"
+          }
+        }
+      }
+    },
+    "Wednesday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mittwoch"
           }
         }
       }
