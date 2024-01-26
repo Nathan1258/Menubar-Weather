@@ -50,6 +50,7 @@ class WeatherUpdater: ObservableObject {
     private func scheduleBackgroundWeatherUpdate() {
         backgroundScheduler.schedule { completion in
             self.fetchData()
+            print("Updating weather...")
             self.backgroundScheduler.interval = 3600
 
             completion(.finished)
