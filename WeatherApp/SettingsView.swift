@@ -14,7 +14,9 @@ struct SettingsView: View {
     @AppStorage("showBackground") var showBackground: Bool = true
     @AppStorage("IsCelsius") var isCelsius: Bool = true
     @AppStorage("showIcon") var showIcon: Bool = true
+    @AppStorage("showFeelsLike") var showFeelsLike: Bool = false
     @AppStorage("Is24Hours") var is24Hours: Bool = false
+
     
     var body: some View {
         HStack{
@@ -36,6 +38,7 @@ struct SettingsView: View {
                 Toggle("Use Celsius instead of Fahrenheit", isOn: $isCelsius)
                 Toggle("Use 12-hour time format", isOn: $is24Hours)
                 Toggle("Show a weather icon aside the temperature", isOn: $showIcon)
+                Toggle("Show 'Feels like' temperature in the menu bar instead of actual temperature", isOn: $showFeelsLike)
             }.padding()
             Spacer()
         }.frame(width: 400)

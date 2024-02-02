@@ -56,9 +56,6 @@
         }
       }
     },
-    "Key" : {
-      "extractionState" : "manual"
-    },
     "Launch MenuBar Weather at login" : {
       "localizations" : {
         "de" : {
@@ -136,6 +133,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Settings"
+          }
+        }
+      }
+    },
+    "Show 'Feels like' temperature in the menu bar instead of actual temperature" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeigt in der Menüleiste die gefühlte Temperatur anstelle der tatsächlichen Temperatur an"
           }
         }
       }

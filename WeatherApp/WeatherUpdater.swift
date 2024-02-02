@@ -17,6 +17,7 @@ class WeatherUpdater: ObservableObject {
     @Published var locationPlacemark: CLPlacemark?
     @AppStorage("showIcon") var showIcon: Bool = true
     @AppStorage("IsCelsius") var isCelsius: Bool = true
+    @AppStorage("showFeelsLike") var showFeelsLike: Bool = false
     
     private let weatherService = WeatherService.shared
     
@@ -91,7 +92,11 @@ class WeatherUpdater: ObservableObject {
             if self.showIcon{
                 menubar.image = NSImage(systemSymbolName: weather.currentWeather.symbolName, accessibilityDescription: nil)
             }
-            menubar.title = localisedTemp(tempInCelsius: weather.currentWeather.temperature.value, isCelsius: self.isCelsius)
+            if self.showFeelsLike{
+                menubar.title = localisedTemp(tempInCelsius: weather.currentWeather.apparentTemperature.value, isCelsius: self.isCelsius)
+            }else{
+                menubar.title = localisedTemp(tempInCelsius: weather.currentWeather.temperature.value, isCelsius: self.isCelsius)
+            }
         }
     }
 }
