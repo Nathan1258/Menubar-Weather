@@ -54,6 +54,7 @@
 		D8A960F02960B17E00CC5D35 = {
 			isa = PBXGroup;
 			children = (
+				D8499E782B63F2F10085E7AC /* Info.plist */,
 				D8A960FB2960B17E00CC5D35 /* WeatherApp */,
 				D8A960FA2960B17E00CC5D35 /* Products */,
 			);
@@ -70,7 +71,6 @@
 		D8A960FB2960B17E00CC5D35 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				D8499E782B63F2F10085E7AC /* Info.plist */,
 				D8B8F4B72B63DC5500211C4F /* Localizable.xcstrings */,
 				D8A960FC2960B17E00CC5D35 /* WeatherAppApp.swift */,
 				D8A961002960B17F00CC5D35 /* Assets.xcassets */,
@@ -310,12 +310,12 @@
 				CODE_SIGN_ENTITLEMENTS = WeatherApp/WeatherApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 5Z7E3KB5S2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "/Users/nathan/Library/CloudStorage/SynologyDrive-Drive/Projects/WeatherApp/WeatherApp/Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "MenuBar Weather";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_LSUIElement = YES;
@@ -327,7 +327,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ellisn.WeatherApp;
 				PRODUCT_NAME = "MenuBar Weather";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -343,12 +343,12 @@
 				CODE_SIGN_ENTITLEMENTS = WeatherApp/WeatherApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 5Z7E3KB5S2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "/Users/nathan/Library/CloudStorage/SynologyDrive-Drive/Projects/WeatherApp/WeatherApp/Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "MenuBar Weather";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_LSUIElement = YES;
@@ -360,7 +360,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ellisn.WeatherApp;
 				PRODUCT_NAME = "MenuBar Weather";
 				SWIFT_EMIT_LOC_STRINGS = YES;

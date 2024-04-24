@@ -16,6 +16,7 @@ struct SettingsView: View {
     @AppStorage("showIcon") var showIcon: Bool = true
     @AppStorage("showFeelsLike") var showFeelsLike: Bool = false
     @AppStorage("Is24Hours") var is24Hours: Bool = false
+    @AppStorage("monocromeIcon") var monocromeIcon: Bool = false
 
     
     var body: some View {
@@ -39,6 +40,7 @@ struct SettingsView: View {
                 Toggle("Use 12-hour time format", isOn: $is24Hours)
                 Toggle("Show a weather icon aside the temperature", isOn: $showIcon)
                 Toggle("Show 'Feels like' temperature in the menu bar instead of actual temperature", isOn: $showFeelsLike)
+                Toggle("Show monochrome icons", isOn: $monocromeIcon)
             }.padding()
             Spacer()
         }.frame(width: 400)

@@ -46,8 +46,10 @@ class AppDelegate: NSObject, NSApplicationDelegate{
         popOver.contentViewController?.view.window?.makeKey()
         
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        statusItem?.button?.imagePosition = NSControl.ImagePosition.imageLeft
         if let MenuButton = statusItem?.button{
             MenuButton.title = "..."
+            MenuButton.image = NSImage(systemSymbolName: "hourglass", accessibilityDescription: "")
             MenuButton.action = #selector(MenuButtonToggle)
         }
         

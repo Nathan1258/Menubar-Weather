@@ -18,6 +18,7 @@ class WeatherUpdater: ObservableObject {
     @AppStorage("showIcon") var showIcon: Bool = true
     @AppStorage("IsCelsius") var isCelsius: Bool = true
     @AppStorage("showFeelsLike") var showFeelsLike: Bool = false
+    @AppStorage("monocromeIcon") var monocromeIcon: Bool = false
     
     private let weatherService = WeatherService.shared
     
@@ -36,24 +37,24 @@ class WeatherUpdater: ObservableObject {
     }
     
     private func setupBackgroundScheduler() {
-            let nextHourInterval = intervalToNextHour()
-            print(nextHourInterval)
-            backgroundScheduler.interval = nextHourInterval
-            scheduleBackgroundWeatherUpdate()
-        }
-
+        let nextHourInterval = intervalToNextHour()
+        print(nextHourInterval)
+        backgroundScheduler.interval = nextHourInterval
+        scheduleBackgroundWeatherUpdate()
+    }
+    
     private func intervalToNextHour() -> TimeInterval {
         let calendar = Calendar.current
         let nextHour = calendar.nextDate(after: Date(), matching: DateComponents(minute: 0), matchingPolicy: .nextTime)!
         return nextHour.timeIntervalSinceNow + 180
     }
-
+    
     private func scheduleBackgroundWeatherUpdate() {
         backgroundScheduler.schedule { completion in
             self.fetchData()
             print("Updating weather...")
             self.backgroundScheduler.interval = 3600
-
+            
             completion(.finished)
         }
     }
@@ -90,7 +91,18 @@ class WeatherUpdater: ObservableObject {
             guard let menubar = AppDelegate.shared.statusItem?.button else {return}
             menubar.image = nil
             if self.showIcon{
-                menubar.image = NSImage(systemSymbolName: weather.currentWeather.symbolName, accessibilityDescription: nil)
+                if self.monocromeIcon{
+                    menubar.image = NSImage(systemSymbolName: weather.currentWeather.symbolName, accessibilityDescription: nil)
+                }else{
+                    if let image = NSImage(named: NSImage.Name(weather.currentWeather.symbolName)) {
+                        let resized = image.resizedMaintainingAspectRatio(width: 24, height: 24)
+                        menubar.image = resized
+                    } else {
+                        let defaultImage = NSImage(named: "mostlyclear")?.resizedMaintainingAspectRatio(width: 24, height: 24)
+                        menubar.image = defaultImage
+                        print("Error: Failed to load image from assets folder.")
+                    }
+                }
             }
             if self.showFeelsLike{
                 menubar.title = localisedTemp(tempInCelsius: weather.currentWeather.apparentTemperature.value, isCelsius: self.isCelsius)
@@ -98,5 +110,22 @@ class WeatherUpdater: ObservableObject {
                 menubar.title = localisedTemp(tempInCelsius: weather.currentWeather.temperature.value, isCelsius: self.isCelsius)
             }
         }
+    }
+}
+
+extension NSImage {
+    func resizedMaintainingAspectRatio(width: CGFloat, height: CGFloat) -> NSImage {
+        let ratioX = width / size.width
+        let ratioY = height / size.height
+        let ratio = ratioX < ratioY ? ratioX : ratioY
+        let newHeight = size.height * ratio
+        let newWidth = size.width * ratio
+        let newSize = NSSize(width: newWidth, height: newHeight)
+        let image = NSImage(size: newSize, flipped: false) { destRect in
+            NSGraphicsContext.current!.imageInterpolation = .high
+            self.draw(in: destRect, from: NSZeroRect, operation: .copy, fraction: 1)
+            return true
+        }
+        return image
     }
 }

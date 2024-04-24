@@ -167,6 +167,9 @@
         }
       }
     },
+    "Show monochrome icons" : {
+
+    },
     "Sourced from  Weather" : {
       "localizations" : {
         "de" : {
