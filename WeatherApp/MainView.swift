@@ -182,13 +182,13 @@ struct HourlyForcast: View{
     var body: some View{
         HStack(spacing: 20){
             ForEach((hourlyWeather?.forecast.prefix(7))!, id: \.self.date){ hour in
-                HourlyForcastItem(time: hour.date, temp: localisedTemp(tempInCelsius: hour.temperature.value, isCelsius: isCelsius), weather: weather!, condition: hour.condition)
+                HourlyForecastItem(time: hour.date, temp: localisedTemp(tempInCelsius: hour.temperature.value, isCelsius: isCelsius), weather: weather!, condition: hour.condition)
             }
         }
     }
 }
 
-struct HourlyForcastItem: View {
+struct HourlyForecastItem: View {
     
     var time: Date
     var temp: String
@@ -198,32 +198,38 @@ struct HourlyForcastItem: View {
     
     var body: some View {
         VStack {
-            Text(Calendar.current.component(.hour, from: Date()).description == Calendar.current.component(.hour, from: time).description ?
-                 "Now" :
-                 (is24Hours ? convertTo12HourFormat(time) : format24HourTime(time)))
-            .foregroundColor(.white)
-            .font(.callout)
+            Text(isCurrentHour ? "Now" : formattedTime)
+                .foregroundColor(.white)
+                .font(.callout.monospacedDigit())
+                .frame(maxWidth: .infinity)
             GetIcon(condition: condition, isDaylight: weather.currentWeather.isDaylight)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 35, height: 35)
             Text(temp)
                 .foregroundColor(.white)
-                .font(.callout)
+                .font(.callout.monospacedDigit())
+                .frame(maxWidth: .infinity)
         }
+    }
+    
+    var isCurrentHour: Bool {
+        Calendar.current.component(.hour, from: Date()) == Calendar.current.component(.hour, from: time)
+    }
+    
+    var formattedTime: String {
+        is24Hours ? convertTo12HourFormat(time) : format24HourTime(time)
     }
     
     func convertTo12HourFormat(_ time: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a" // 12-hour format with AM/PM
-        let formattedTime = formatter.string(from: time)
-        return formattedTime.replacingOccurrences(of: " ", with: "")
+        formatter.dateFormat = "ha"
+        return formatter.string(from: time).lowercased()
     }
 
-    
     func format24HourTime(_ time: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm" // 24-hour format
+        formatter.dateFormat = "HH:mm"
         return formatter.string(from: time)
     }
 }
