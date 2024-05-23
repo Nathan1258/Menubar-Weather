@@ -317,7 +317,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wschód słońca"
+            "value" : "Wschód"
           }
         }
       }
@@ -333,7 +333,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zachód słońca"
+            "value" : "Zachód"
           }
         }
       }
