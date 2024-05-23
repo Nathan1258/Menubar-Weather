@@ -258,12 +258,19 @@
       }
     },
     "Show monochrome icons" : {
-      "localizations" : {
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pokazuj monochromatyczne ikony"
-          }
+        "localizations" : {
+            "de" : {
+            "stringUnit" : {
+                "state" : "translated",
+                "value" : "Zeige monochrome Icons"
+            }
+            },
+            "pl" : {
+            "stringUnit" : {
+                "state" : "translated",
+                "value" : "Pokazuj monochromatyczne ikony"
+            }
+            }
         }
     },
     "Sourced from  Weather" : {
