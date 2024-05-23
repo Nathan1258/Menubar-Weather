@@ -11,6 +11,12 @@
             "state" : "translated",
             "value" : "Taupunkt"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Punkt rosy"
+          }
         }
       }
     },
@@ -21,6 +27,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gefühlt"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odczuwalna"
           }
         }
       }
@@ -33,6 +45,12 @@
             "state" : "translated",
             "value" : "Freitag"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piątek"
+          }
         }
       }
     },
@@ -42,6 +60,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hallo"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hej"
           }
         }
       }
@@ -53,6 +77,12 @@
             "state" : "translated",
             "value" : "Feuchtigkeit"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wilgotność"
+          }
         }
       }
     },
@@ -63,6 +93,12 @@
             "state" : "translated",
             "value" : "Starte MenuBar Weather bei Login"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uruchamiaj na starcie"
+          }
         }
       }
     },
@@ -72,6 +108,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bitte gib’ für diese App die WLAN- und Ortungsdienste frei."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upewnij się, że WIFI i usługi lokalizacyjne są włączone."
           }
         }
       }
@@ -84,6 +126,12 @@
             "state" : "translated",
             "value" : "Montag"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poniedziałek"
+          }
         }
       }
     },
@@ -95,6 +143,12 @@
             "state" : "translated",
             "value" : "Jetzt"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teraz"
+          }
         }
       }
     },
@@ -104,6 +158,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Beenden"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zakończ"
           }
         }
       }
@@ -115,6 +175,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Samstag"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sobota"
           }
         }
       }
@@ -134,6 +200,12 @@
             "state" : "translated",
             "value" : "Settings"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustawienia"
+          }
         }
       }
     },
@@ -143,6 +215,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zeigt in der Menüleiste die gefühlte Temperatur anstelle der tatsächlichen Temperatur an"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokazuj odczuwalną temperaturę zamiast rzeczywistej w pasku menu"
           }
         }
       }
@@ -154,6 +232,12 @@
             "state" : "translated",
             "value" : "Zeige in der Menüleiste neben der Temperatur ein Icon mit den Wetterverhältnissen"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokazuj ikonę pogody obok temperatury"
+          }
         }
       }
     },
@@ -164,11 +248,30 @@
             "state" : "translated",
             "value" : "Passe den Hintergrund an das momentane Wetter an"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokaż gradientowe tło w zależności od aktualnej pogody"
+          }
         }
       }
     },
     "Show monochrome icons" : {
-
+        "localizations" : {
+            "de" : {
+            "stringUnit" : {
+                "state" : "translated",
+                "value" : "Zeige monochrome Icons"
+            }
+            },
+            "pl" : {
+            "stringUnit" : {
+                "state" : "translated",
+                "value" : "Pokazuj monochromatyczne ikony"
+            }
+            }
+        }
     },
     "Sourced from  Weather" : {
       "localizations" : {
@@ -176,6 +279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Daten von  Weather"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dane z  Weather"
           }
         }
       }
@@ -188,6 +297,12 @@
             "state" : "translated",
             "value" : "Sonntag"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sobota"
+          }
         }
       }
     },
@@ -198,6 +313,12 @@
             "state" : "translated",
             "value" : "Sonnenaufgang"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wschód"
+          }
         }
       }
     },
@@ -207,6 +328,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sonnenuntergang"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zachód"
           }
         }
       }
@@ -219,6 +346,12 @@
             "state" : "translated",
             "value" : "Donnerstag"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czwartek"
+          }
         }
       }
     },
@@ -229,6 +362,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heute"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dzisiaj"
           }
         }
       }
@@ -241,6 +380,12 @@
             "state" : "translated",
             "value" : "Dienstag"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wtorek"
+          }
         }
       }
     },
@@ -250,6 +395,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gib’ uns noch ein paar Sekunden…"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Momencik…"
           }
         }
       }
@@ -261,6 +412,12 @@
             "state" : "translated",
             "value" : "Zeige die Zeit im 12-Stunden-Format an"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Używaj formatu 12-godzinnego"
+          }
         }
       }
     },
@@ -270,6 +427,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nutze als Temperatureinheit Celsius statt Fahrenheit"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Używaj stopni Celsjusza zamiast Fahrenheita"
           }
         }
       }
@@ -281,6 +444,12 @@
             "state" : "translated",
             "value" : "UV-Index"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Index UV"
+          }
         }
       }
     },
@@ -290,6 +459,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wir laden die Wetterdaten"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wczytuję aktualne dane pogodowe"
           }
         }
       }
@@ -301,6 +476,12 @@
             "state" : "translated",
             "value" : "Es gibt ein paar Probleme"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mamy problem"
+          }
         }
       }
     },
@@ -311,6 +492,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mittwoch"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Środa"
           }
         }
       }
