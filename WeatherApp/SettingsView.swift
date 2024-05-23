@@ -41,9 +41,22 @@ struct SettingsView: View {
                 Toggle("Show a weather icon aside the temperature", isOn: $showIcon)
                 Toggle("Show 'Feels like' temperature in the menu bar instead of actual temperature", isOn: $showFeelsLike)
                 Toggle("Show monochrome icons", isOn: $monocromeIcon)
+                Button(action: {
+                    openURL("https://github.com/Nathan1258/Menubar-Weather")
+                }){
+                    Text("Go to GitHub Page")
+                }
             }.padding()
             Spacer()
         }.frame(width: 400)
+    }
+    
+    func openURL(_ urlString: String) {
+        if let url = URL(string: urlString) {
+            NSWorkspace.shared.open(url)
+        } else {
+            print("Invalid URL")
+        }
     }
 }
 

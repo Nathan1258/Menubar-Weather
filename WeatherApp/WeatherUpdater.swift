@@ -94,13 +94,24 @@ class WeatherUpdater: ObservableObject {
                 if self.monocromeIcon{
                     menubar.image = NSImage(systemSymbolName: weather.currentWeather.symbolName, accessibilityDescription: nil)
                 }else{
-                    if let image = NSImage(named: NSImage.Name(weather.currentWeather.symbolName)) {
-                        let resized = image.resizedMaintainingAspectRatio(width: 24, height: 24)
-                        menubar.image = resized
-                    } else {
-                        let defaultImage = NSImage(named: "mostlyclear")?.resizedMaintainingAspectRatio(width: 24, height: 24)
-                        menubar.image = defaultImage
-                        print("Error: Failed to load image from assets folder.")
+                    if !weather.currentWeather.isDaylight{
+                        if let image = NSImage(named: NSImage.Name("night-"+weather.currentWeather.symbolName)) {
+                            let resized = image.resizedMaintainingAspectRatio(width: 24, height: 24)
+                            menubar.image = resized
+                        } else {
+                            let defaultImage = NSImage(named: "mostlyclear")?.resizedMaintainingAspectRatio(width: 24, height: 24)
+                            menubar.image = defaultImage
+                            print("Error: Failed to load image from assets folder.")
+                        }
+                    }else{
+                        if let image = NSImage(named: NSImage.Name(weather.currentWeather.symbolName)) {
+                            let resized = image.resizedMaintainingAspectRatio(width: 24, height: 24)
+                            menubar.image = resized
+                        } else {
+                            let defaultImage = NSImage(named: "mostlyclear")?.resizedMaintainingAspectRatio(width: 24, height: 24)
+                            menubar.image = defaultImage
+                            print("Error: Failed to load image from assets folder.")
+                        }
                     }
                 }
             }

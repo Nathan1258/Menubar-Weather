@@ -22,7 +22,7 @@ struct MainView: View {
     @StateObject private var locationManager = LocationManager()
     
     @StateObject private var weatherUpdater: WeatherUpdater
-
+    
     init() {
         let locationManager = LocationManager()
         _locationManager = StateObject(wrappedValue: locationManager)
@@ -47,10 +47,9 @@ struct MainView: View {
                         ZStack{
                             if showBackground{
                                 GetBackground(condition: weather.currentWeather.condition, isDaylight: weather.currentWeather.isDaylight).ignoresSafeArea()
-                                
                             }
                             VStack{
-                                Top(weather: $weatherUpdater.weather, locationPlacemark: $weatherUpdater.locationPlacemark)
+                                Top(weather: $weatherUpdater.weather, hourlyWeather: $weatherUpdater.hourlyWeather ,locationPlacemark: $weatherUpdater.locationPlacemark)
                                     .padding()
                                 Divider()
                                     .padding(.horizontal)
@@ -124,6 +123,7 @@ struct TaskId: Equatable{
 struct Top: View{
     
     @Binding var weather: Weather?
+    @Binding var hourlyWeather: Forecast<HourWeather>?
     @Binding var locationPlacemark: CLPlacemark?
     
     @AppStorage("IsCelsius") var isCelsius: Bool = true
@@ -142,7 +142,7 @@ struct Top: View{
                 Spacer()
                 Text(weather!.currentWeather.condition.description)
                     .foregroundColor(.white)
-                    .font(.title3)
+                    .font(.title2)
                     .bold()
             }
             Spacer()
@@ -152,7 +152,9 @@ struct Top: View{
                         .foregroundColor(.white)
                         .font(.title)
                         .bold()
-                    
+                        .onTapGesture {
+                            isCelsius.toggle()
+                        }
                     GetIcon(condition: weather!.currentWeather.condition, isDaylight: weather!.currentWeather.isDaylight)
                         .resizable()
                         .scaledToFit()
@@ -163,10 +165,10 @@ struct Top: View{
                     Text("Feels like")
                     Text(localisedTemp(tempInCelsius: weather!.currentWeather.apparentTemperature.value, isCelsius: isCelsius))
                 }
-                    .foregroundColor(.white)
-                    .font(.title3)
-                    .bold()
-                    .padding(.trailing, 7)
+                .foregroundColor(.white)
+                .font(.title3)
+                .bold()
+                .padding(.trailing, 7)
             }
         }
     }
@@ -226,7 +228,7 @@ struct HourlyForecastItem: View {
         formatter.dateFormat = "ha"
         return formatter.string(from: time).lowercased()
     }
-
+    
     func format24HourTime(_ time: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
@@ -272,7 +274,7 @@ struct WeeklyForcastItem: View{
             GetIcon(condition: condition, isDaylight: weather.currentWeather.isDaylight)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 20, height: 20)
+                .frame(width: 30, height: 30)
         }
     }
 }
@@ -283,6 +285,7 @@ struct Bottom: View{
     @Binding var weather: Weather?
     @Binding var showSettings: Bool
     @AppStorage("IsCelsius") var isCelsius: Bool = true
+    @AppStorage("Is24Hours") var is24Hours: Bool = false
     
     var body: some View{
         VStack(spacing: 16){
@@ -315,7 +318,7 @@ struct Bottom: View{
                         .lineLimit(1)
                 }
                 VStack(spacing: 12) {
-                    Text(dateToTime(date: weather!.dailyForecast.first?.sun.sunrise))
+                    Text(dateToTime(date: weather!.dailyForecast.first?.sun.sunrise, is24Hours: is24Hours))
                         .foregroundColor(.white)
                         .bold()
                     Text("Sunrise")
@@ -324,24 +327,25 @@ struct Bottom: View{
                         .lineLimit(1)
                 }
                 VStack(spacing: 12) {
-                    Text(dateToTime(date: weather!.dailyForecast.first?.sun.sunset))
+                    Text(dateToTime(date: weather!.dailyForecast.first?.sun.sunset, is24Hours: is24Hours))
                         .foregroundColor(.white)
                         .bold()
                     Text("Sunset")
                         .foregroundColor(.white)
                         .opacity(0.6)
                         .lineLimit(1)
-                        
+                    
                 }
             }.minimumScaleFactor(0.5)
-
-
+            
+            
             HStack{
                 Button(action: {
                     showSettings.toggle()
                 }){
                     Text("Settings")
                 }
+                
                 Button(action: {
                     NSApplication.shared.terminate(nil)
                 }){
@@ -352,9 +356,9 @@ struct Bottom: View{
     }
 }
 
-func dateToTime(date: Date?) -> String{
+func dateToTime(date: Date?, is24Hours: Bool) -> String{
     let formatter = DateFormatter()
-    formatter.dateFormat = "HH:mm"
+    formatter.dateFormat = is24Hours ? "hh:mma" : "HH:mm"
     if let date = date{
         let currentTime = formatter.string(from: date)
         return currentTime

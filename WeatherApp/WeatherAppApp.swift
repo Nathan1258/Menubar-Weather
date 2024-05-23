@@ -68,7 +68,8 @@ class AppDelegate: NSObject, NSApplicationDelegate{
         else{
             if let menuButton = statusItem?.button{
                 NSApplication.shared.activate(ignoringOtherApps: true)
-                self.popOver.show(relativeTo: menuButton.bounds, of: menuButton, preferredEdge: NSRectEdge.minY)
+                self.popOver.contentSize = NSSize(width: 400, height: 300)
+                self.popOver.show(relativeTo: menuButton.bounds, of: menuButton, preferredEdge: .minY)
             }
         }
     }

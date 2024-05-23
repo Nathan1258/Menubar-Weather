@@ -17,6 +17,12 @@
             "state" : "translated",
             "value" : "Punkt rosy"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rosný bod"
+          }
         }
       }
     },
@@ -33,6 +39,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Odczuwalna"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pocitovo"
           }
         }
       }
@@ -51,8 +63,17 @@
             "state" : "translated",
             "value" : "Piątek"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piatok"
+          }
         }
       }
+    },
+    "Go to GitHub Page" : {
+
     },
     "Hello" : {
       "localizations" : {
@@ -66,6 +87,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hej"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahoj"
           }
         }
       }
@@ -83,6 +110,12 @@
             "state" : "translated",
             "value" : "Wilgotność"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vlhkosť"
+          }
         }
       }
     },
@@ -99,6 +132,12 @@
             "state" : "translated",
             "value" : "Uruchamiaj na starcie"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spustiť MenuBar Weather pri štarte"
+          }
         }
       }
     },
@@ -114,6 +153,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Upewnij się, że WIFI i usługi lokalizacyjne są włączone."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uisti sa, že máš zapnuté Wi-Fi a lokalizačné služby pre túto aplikáciu."
           }
         }
       }
@@ -132,6 +177,12 @@
             "state" : "translated",
             "value" : "Poniedziałek"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pondelok"
+          }
         }
       }
     },
@@ -145,6 +196,12 @@
           }
         },
         "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teraz"
+          }
+        },
+        "sk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Teraz"
@@ -165,6 +222,12 @@
             "state" : "translated",
             "value" : "Zakończ"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukončiť"
+          }
         }
       }
     },
@@ -178,6 +241,12 @@
           }
         },
         "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sobota"
+          }
+        },
+        "sk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sobota"
@@ -206,6 +275,12 @@
             "state" : "translated",
             "value" : "Ustawienia"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nastavenia"
+          }
         }
       }
     },
@@ -221,6 +296,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pokazuj odczuwalną temperaturę zamiast rzeczywistej w pasku menu"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobraziť v lište \"Pocitovú\" teplotu namiesto skutočnej teploty"
           }
         }
       }
@@ -238,6 +319,12 @@
             "state" : "translated",
             "value" : "Pokazuj ikonę pogody obok temperatury"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobraziť ikonu počasia vedľa teploty"
+          }
         }
       }
     },
@@ -254,24 +341,36 @@
             "state" : "translated",
             "value" : "Pokaż gradientowe tło w zależności od aktualnej pogody"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobraziť pozadie podľa aktuálneho počasia"
+          }
         }
       }
     },
     "Show monochrome icons" : {
-        "localizations" : {
-            "de" : {
-            "stringUnit" : {
-                "state" : "translated",
-                "value" : "Zeige monochrome Icons"
-            }
-            },
-            "pl" : {
-            "stringUnit" : {
-                "state" : "translated",
-                "value" : "Pokazuj monochromatyczne ikony"
-            }
-            }
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeige monochrome Icons"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokazuj monochromatyczne ikony"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobraziť čiernobiele ikony"
+          }
         }
+      }
     },
     "Sourced from  Weather" : {
       "localizations" : {
@@ -285,6 +384,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dane z  Weather"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zdroj:  Počasie"
           }
         }
       }
@@ -303,6 +408,12 @@
             "state" : "translated",
             "value" : "Sobota"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nedeľa"
+          }
         }
       }
     },
@@ -319,6 +430,12 @@
             "state" : "translated",
             "value" : "Wschód"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Východ"
+          }
         }
       }
     },
@@ -334,6 +451,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zachód"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Západ"
           }
         }
       }
@@ -352,6 +475,12 @@
             "state" : "translated",
             "value" : "Czwartek"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Štvrtok"
+          }
         }
       }
     },
@@ -368,6 +497,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dzisiaj"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dnes"
           }
         }
       }
@@ -386,6 +521,12 @@
             "state" : "translated",
             "value" : "Wtorek"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utorok"
+          }
         }
       }
     },
@@ -401,6 +542,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Momencik…"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O chvíľu to bude..."
           }
         }
       }
@@ -418,6 +565,12 @@
             "state" : "translated",
             "value" : "Używaj formatu 12-godzinnego"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Použiť 12-hodinový formát času"
+          }
         }
       }
     },
@@ -433,6 +586,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Używaj stopni Celsjusza zamiast Fahrenheita"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Používať stupne Celzia namiesto Fahrenheitov"
           }
         }
       }
@@ -450,6 +609,12 @@
             "state" : "translated",
             "value" : "Index UV"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UV Index"
+          }
         }
       }
     },
@@ -465,6 +630,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wczytuję aktualne dane pogodowe"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Získavame informácie o aktuálnom počasí"
           }
         }
       }
@@ -482,6 +653,12 @@
             "state" : "translated",
             "value" : "Mamy problem"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niečo nám nefunguje"
+          }
         }
       }
     },
@@ -498,6 +675,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Środa"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Streda"
           }
         }
       }
