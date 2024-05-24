@@ -73,7 +73,26 @@
       }
     },
     "Go to GitHub Page" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gehe zur GitHub-Seite"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przejdź do strony GitHub"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prejsť na stránku GitHub"
+          }
+        }
+      }
     },
     "Hello" : {
       "localizations" : {
@@ -159,6 +178,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uisti sa, že máš zapnuté Wi-Fi a lokalizačné služby pre túto aplikáciu."
+          }
+        }
+      }
+    },
+    "Metric to display in menubar" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metrik zum Anzeigen in der Menüleiste"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metryka do wyświetlenia w pasku menu"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metrika na zobrazenie v paneli ponuky"
           }
         }
       }
@@ -285,6 +326,7 @@
       }
     },
     "Show 'Feels like' temperature in the menu bar instead of actual temperature" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

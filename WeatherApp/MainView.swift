@@ -129,13 +129,13 @@ struct Top: View{
     @AppStorage("IsCelsius") var isCelsius: Bool = true
     
     var body: some View{
-        HStack{
+        HStack(alignment: .center){
             VStack(alignment: .leading){
-                Text(locationPlacemark!.locality ?? "")
+                Text(locationPlacemark!.locality ?? "Unknown")
                     .foregroundColor(.white)
                     .font(.title)
                     .bold()
-                Text(locationPlacemark!.country ?? "")
+                Text(locationPlacemark!.country ?? "Unknown")
                     .foregroundColor(.white)
                     .font(.subheadline)
                     .opacity(0.6)
@@ -144,7 +144,7 @@ struct Top: View{
                     .foregroundColor(.white)
                     .font(.title2)
                     .bold()
-            }
+            }.padding(.top, 8)
             Spacer()
             VStack(alignment: .trailing){
                 HStack{
@@ -200,7 +200,7 @@ struct HourlyForecastItem: View {
     
     var body: some View {
         VStack {
-            Text(isCurrentHour ? "Now" : formattedTime)
+            Text(isCurrentHour ? NSLocalizedString("Now", comment: "") : formattedTime)
                 .foregroundColor(.white)
                 .font(.callout.monospacedDigit())
                 .frame(maxWidth: .infinity)
@@ -261,7 +261,7 @@ struct WeeklyForcastItem: View{
     
     var body: some View{
         HStack{
-            Text(Date().dayOfWeek() == day ? "Today" : day)
+            Text(Date().dayOfWeek() == day ? NSLocalizedString("Today", comment: "") : day)
                 .foregroundColor(.white)
                 .font(.headline)
                 .bold()

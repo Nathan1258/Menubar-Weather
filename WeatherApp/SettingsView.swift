@@ -8,13 +8,20 @@
 import SwiftUI
 import LaunchAtLogin
 
+enum MenuBarInfo: String, CaseIterable {
+    case temperature = "Temperature"
+    case feelslike = "Feels like temperature"
+    case chanceOfPerception = "Chance of Perception"
+}
+
 struct SettingsView: View {
     
     @Binding var showSettings: Bool
     @AppStorage("showBackground") var showBackground: Bool = true
+    @AppStorage("menuBarInfo") var menuBarInfo: MenuBarInfo = .temperature
     @AppStorage("IsCelsius") var isCelsius: Bool = true
     @AppStorage("showIcon") var showIcon: Bool = true
-    @AppStorage("showFeelsLike") var showFeelsLike: Bool = false
+//    @AppStorage("showFeelsLike") var showFeelsLike: Bool = false
     @AppStorage("Is24Hours") var is24Hours: Bool = false
     @AppStorage("monocromeIcon") var monocromeIcon: Bool = false
 
@@ -38,8 +45,13 @@ struct SettingsView: View {
                 Toggle("Show gradient background based on current weather", isOn: $showBackground)
                 Toggle("Use Celsius instead of Fahrenheit", isOn: $isCelsius)
                 Toggle("Use 12-hour time format", isOn: $is24Hours)
-                Toggle("Show a weather icon aside the temperature", isOn: $showIcon)
-                Toggle("Show 'Feels like' temperature in the menu bar instead of actual temperature", isOn: $showFeelsLike)
+                Toggle("Show the current weather's icon aside the metric", isOn: $showIcon)
+                Picker("Metric to display in menubar", selection: $menuBarInfo) {
+                    ForEach(MenuBarInfo.allCases, id: \.self) { unit in
+                        Text(unit.rawValue)
+                    }
+                }
+//                Toggle("Show 'Feels like' temperature in the menu bar instead of actual temperature", isOn: $showFeelsLike)
                 Toggle("Show monochrome icons", isOn: $monocromeIcon)
                 Button(action: {
                     openURL("https://github.com/Nathan1258/Menubar-Weather")

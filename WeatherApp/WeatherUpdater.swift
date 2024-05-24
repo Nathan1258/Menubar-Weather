@@ -86,6 +86,10 @@ class WeatherUpdater: ObservableObject {
     }
     
     private func updateMenubar() {
+        @AppStorage("menuBarInfo") var menuBarInfo: MenuBarInfo = .temperature
+        let precipitationChance = hourlyWeather?.forecast.first?.precipitationChance ?? 0.0
+        let precipitationChanceString = "\(Int(precipitationChance * 100))%"
+        
         DispatchQueue.main.async {
             guard let weather = self.weather else {return}
             guard let menubar = AppDelegate.shared.statusItem?.button else {return}
@@ -115,10 +119,13 @@ class WeatherUpdater: ObservableObject {
                     }
                 }
             }
-            if self.showFeelsLike{
-                menubar.title = localisedTemp(tempInCelsius: weather.currentWeather.apparentTemperature.value, isCelsius: self.isCelsius)
-            }else{
+            switch menuBarInfo{
+            case .temperature:
                 menubar.title = localisedTemp(tempInCelsius: weather.currentWeather.temperature.value, isCelsius: self.isCelsius)
+            case .feelslike:
+                menubar.title = localisedTemp(tempInCelsius: weather.currentWeather.apparentTemperature.value, isCelsius: self.isCelsius)
+            case .chanceOfPerception:
+                menubar.title = precipitationChanceString
             }
         }
     }
