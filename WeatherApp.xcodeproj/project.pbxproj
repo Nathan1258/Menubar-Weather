@@ -143,6 +143,7 @@
 				de,
 				es,
 				sk,
+				fr,
 			);
 			mainGroup = D8A960F02960B17E00CC5D35;
 			packageReferences = (
@@ -311,7 +312,7 @@
 				CODE_SIGN_ENTITLEMENTS = WeatherApp/WeatherApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = 5Z7E3KB5S2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -328,7 +329,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 2024.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ellisn.WeatherApp;
 				PRODUCT_NAME = "MenuBar Weather";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -344,7 +345,7 @@
 				CODE_SIGN_ENTITLEMENTS = WeatherApp/WeatherApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = 5Z7E3KB5S2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -361,7 +362,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 2024.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ellisn.WeatherApp;
 				PRODUCT_NAME = "MenuBar Weather";
 				SWIFT_EMIT_LOC_STRINGS = YES;
