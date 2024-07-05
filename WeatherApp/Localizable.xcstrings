@@ -349,6 +349,7 @@
       }
     },
     "Show a weather icon aside the temperature" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -413,6 +414,9 @@
           }
         }
       }
+    },
+    "Show the current weather's icon aside the metric" : {
+
     },
     "Sourced from  Weather" : {
       "localizations" : {

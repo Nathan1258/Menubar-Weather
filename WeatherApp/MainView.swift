@@ -300,7 +300,7 @@ struct Bottom: View{
                         .lineLimit(1)
                 }
                 VStack(spacing: 12) {
-                    Text(weather!.currentWeather.dewPoint.value.description)
+                    Text(String(Int(weather!.currentWeather.dewPoint.value)))
                         .foregroundColor(.white)
                         .bold()
                     Text("Dew Point")
