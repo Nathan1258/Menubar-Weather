@@ -159,6 +159,10 @@ struct Top: View{
                         .resizable()
                         .scaledToFit()
                         .frame(width: 65, height: 50)
+                        .onTapGesture {
+                            let weatherAppURL = URL(fileURLWithPath: "/System/Applications/Weather.app")
+                            NSWorkspace.shared.open(weatherAppURL)
+                        }
                 }
                 Spacer()
                 HStack(spacing:6){
