@@ -47,7 +47,7 @@ func GetIcon(condition: WeatherCondition, isDaylight: Bool) -> Image{
     case .strongStorms:
         return Image("strongstorms")
     case .thunderstorms:
-        if !isDaylight {return Image("night-stromstorms")}
+        if !isDaylight {return Image("night-strongstorms")}
         return Image("strongstorms")
     case .hot:
         return Image("hot")
