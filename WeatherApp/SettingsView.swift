@@ -20,6 +20,7 @@ struct SettingsView: View {
     @AppStorage("showBackground") var showBackground: Bool = true
     @AppStorage("menuBarInfo") var menuBarInfo: MenuBarInfo = .temperature
     @AppStorage("IsCelsius") var isCelsius: Bool = true
+    @AppStorage("showUnits") var showUnits: Bool = true
     @AppStorage("showIcon") var showIcon: Bool = true
 //    @AppStorage("showFeelsLike") var showFeelsLike: Bool = false
     @AppStorage("Is24Hours") var is24Hours: Bool = false
@@ -44,6 +45,7 @@ struct SettingsView: View {
                 }
                 Toggle("Show gradient background based on current weather", isOn: $showBackground)
                 Toggle("Use Celsius instead of Fahrenheit", isOn: $isCelsius)
+                Toggle("Show units when displaying temperature", isOn: $showUnits)
                 Toggle("Use 12-hour time format", isOn: $is24Hours)
                 Toggle("Show the current weather's icon aside the metric", isOn: $showIcon)
                 Picker("Metric to display in menubar", selection: $menuBarInfo) {

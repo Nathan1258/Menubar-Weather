@@ -9,12 +9,12 @@ import SwiftUI
 import WeatherKit
 import CoreLocation
 
-func localisedTemp(tempInCelsius: Double, isCelsius: Bool) -> String{
+func localisedTemp(tempInCelsius: Double, isCelsius: Bool, showUnits: Bool) -> String{
     if isCelsius {
-        return String(tempInCelsius).roundedTemp() + "℃"
+        return String(tempInCelsius).roundedTemp() + (showUnits ? "℃" : "°")
     }
     let fahrenheitTemp = (tempInCelsius * 1.8) + 32
-    return String(fahrenheitTemp).roundedTemp() + "℉"
+    return String(fahrenheitTemp).roundedTemp() + (showUnits ? "℉" : "°")
 }
 
 struct MainView: View {
@@ -32,6 +32,7 @@ struct MainView: View {
     @State var showSettings: Bool = false
     @AppStorage("showBackground") var showBackground: Bool = true
     @AppStorage("IsCelsius") var isCelsius: Bool = true
+    @AppStorage("showUnits") var showUnits: Bool = true
     @AppStorage("showIcon") var showIcon: Bool = true
     @State var error: String = ""
     
@@ -127,6 +128,7 @@ struct Top: View{
     @Binding var locationPlacemark: CLPlacemark?
     
     @AppStorage("IsCelsius") var isCelsius: Bool = true
+    @AppStorage("showUnits") var showUnits: Bool = true
     
     var body: some View{
         HStack(alignment: .center){
@@ -148,7 +150,7 @@ struct Top: View{
             Spacer()
             VStack(alignment: .trailing){
                 HStack{
-                    Text(localisedTemp(tempInCelsius: weather!.currentWeather.temperature.value, isCelsius: isCelsius))
+                    Text(localisedTemp(tempInCelsius: weather!.currentWeather.temperature.value, isCelsius: isCelsius, showUnits: showUnits))
                         .foregroundColor(.white)
                         .font(.title)
                         .bold()
@@ -167,7 +169,7 @@ struct Top: View{
                 Spacer()
                 HStack(spacing:6){
                     Text("Feels like")
-                    Text(localisedTemp(tempInCelsius: weather!.currentWeather.apparentTemperature.value, isCelsius: isCelsius))
+                    Text(localisedTemp(tempInCelsius: weather!.currentWeather.apparentTemperature.value, isCelsius: isCelsius, showUnits: showUnits))
                 }
                 .foregroundColor(.white)
                 .font(.title3)
@@ -184,11 +186,12 @@ struct HourlyForcast: View{
     @Binding var weather: Weather?
     @Binding var hourlyWeather: Forecast<HourWeather>?
     @AppStorage("IsCelsius") var isCelsius: Bool = true
+    @AppStorage("showUnits") var showUnits: Bool = true
     
     var body: some View{
         HStack(spacing: 20){
             ForEach((hourlyWeather?.forecast.prefix(7))!, id: \.self.date){ hour in
-                HourlyForecastItem(time: hour.date, temp: localisedTemp(tempInCelsius: hour.temperature.value, isCelsius: isCelsius), weather: weather!, condition: hour.condition)
+                HourlyForecastItem(time: hour.date, temp: localisedTemp(tempInCelsius: hour.temperature.value, isCelsius: isCelsius, showUnits: showUnits), weather: weather!, condition: hour.condition)
             }
         }
     }
@@ -246,11 +249,12 @@ struct WeeklyForcast: View{
     
     @Binding var weather: Weather?
     @AppStorage("IsCelsius") var isCelsius: Bool = true
+    @AppStorage("showUnits") var showUnits: Bool = true
     
     var body: some View{
         VStack(spacing: 16){
             ForEach(weather!.dailyForecast.forecast.prefix(7), id: \.self.date){ day in
-                WeeklyForcastItem(day: day.date.dayOfWeek(), tempHigh: localisedTemp(tempInCelsius: day.highTemperature.value, isCelsius: isCelsius), tempLow: localisedTemp(tempInCelsius: day.lowTemperature.value, isCelsius: isCelsius), condition: day.condition, weather: weather!)
+                WeeklyForcastItem(day: day.date.dayOfWeek(), tempHigh: localisedTemp(tempInCelsius: day.highTemperature.value, isCelsius: isCelsius, showUnits: showUnits), tempLow: localisedTemp(tempInCelsius: day.lowTemperature.value, isCelsius: isCelsius, showUnits: showUnits), condition: day.condition, weather: weather!)
             }
         }
     }
