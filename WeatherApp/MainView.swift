@@ -353,12 +353,16 @@ struct Bottom: View{
                 }){
                     Text("Settings")
                 }
+                .background(Color.white)
+                .cornerRadius(4)
                 
                 Button(action: {
                     NSApplication.shared.terminate(nil)
                 }){
                     Text("Quit")
                 }
+                .background(Color.white)
+                .cornerRadius(4)
             }
         }
     }
