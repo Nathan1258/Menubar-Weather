@@ -6,16 +6,16 @@
     },
     "Dew Point" : {
       "localizations" : {
-         "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Point de rosée"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Taupunkt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Point de rosée"
           }
         },
         "pl" : {
@@ -35,16 +35,16 @@
     "Feels like" : {
       "extractionState" : "manual",
       "localizations" : {
-          "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ressentie"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gefühlt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ressentie"
           }
         },
         "pl" : {
@@ -64,16 +64,16 @@
     "Friday" : {
       "extractionState" : "manual",
       "localizations" : {
-          "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vendredi"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Freitag"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vendredi"
           }
         },
         "pl" : {
@@ -92,16 +92,16 @@
     },
     "Go to GitHub Page" : {
       "localizations" : {
-          "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aller à la page GitHub"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gehe zur GitHub-Seite"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aller à la page GitHub"
           }
         },
         "pl" : {
@@ -120,16 +120,16 @@
     },
     "Hello" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bonjour"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hallo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bonjour"
           }
         },
         "pl" : {
@@ -148,16 +148,16 @@
     },
     "Humidity" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Humidité"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Feuchtigkeit"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Humidité"
           }
         },
         "pl" : {
@@ -176,16 +176,16 @@
     },
     "Launch MenuBar Weather at login" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lancer MenuBar Weather à la connexion"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Starte MenuBar Weather bei Login"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lancer MenuBar Weather à la connexion"
           }
         },
         "pl" : {
@@ -204,16 +204,16 @@
     },
     "Make sure your WiFi and location services are on for this app." : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Assurez-vous que votre WiFi et vos services de localisation sont activés pour cette application."
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bitte gib’ für diese App die WLAN- und Ortungsdienste frei."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assurez-vous que votre WiFi et vos services de localisation sont activés pour cette application."
           }
         },
         "pl" : {
@@ -232,16 +232,16 @@
     },
     "Metric to display in menubar" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mesures à afficher dans la barre de menu"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Metrik zum Anzeigen in der Menüleiste"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mesures à afficher dans la barre de menu"
           }
         },
         "pl" : {
@@ -261,16 +261,16 @@
     "Monday" : {
       "extractionState" : "manual",
       "localizations" : {
-         "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lundi"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Montag"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lundi"
           }
         },
         "pl" : {
@@ -290,16 +290,16 @@
     "Now" : {
       "extractionState" : "manual",
       "localizations" : {
-         "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Maintenant"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jetzt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintenant"
           }
         },
         "pl" : {
@@ -318,16 +318,16 @@
     },
     "Quit" : {
       "localizations" : {
-         "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quitter"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Beenden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitter"
           }
         },
         "pl" : {
@@ -347,16 +347,16 @@
     "Saturday" : {
       "extractionState" : "manual",
       "localizations" : {
-         "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Samedi"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Samstag"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Samedi"
           }
         },
         "pl" : {
@@ -377,12 +377,6 @@
       "comment" : "Settings button",
       "extractionState" : "manual",
       "localizations" : {
-         "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Paramétres"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -393,6 +387,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Settings"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paramétres"
           }
         },
         "pl" : {
@@ -412,16 +412,16 @@
     "Show 'Feels like' temperature in the menu bar instead of actual temperature" : {
       "extractionState" : "stale",
       "localizations" : {
-         "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Afficher la température ressentie dans la barre de menu au lieu de la température réelle"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zeigt in der Menüleiste die gefühlte Temperatur anstelle der tatsächlichen Temperatur an"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher la température ressentie dans la barre de menu au lieu de la température réelle"
           }
         },
         "pl" : {
@@ -439,17 +439,18 @@
       }
     },
     "Show a weather icon aside the temperature" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Afficher une icône météo à côté de la température"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zeige in der Menüleiste neben der Temperatur ein Icon mit den Wetterverhältnissen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher une icône météo à côté de la température"
           }
         },
         "pl" : {
@@ -468,16 +469,16 @@
     },
     "Show gradient background based on current weather" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Afficher un arrière-plan dégradé en fonction de la météo actuelle"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Passe den Hintergrund an das momentane Wetter an"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher un arrière-plan dégradé en fonction de la météo actuelle"
           }
         },
         "pl" : {
@@ -496,16 +497,16 @@
     },
     "Show monochrome icons" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Localisation"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zeige monochrome Icons"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Localisation"
           }
         },
         "pl" : {
@@ -522,18 +523,24 @@
         }
       }
     },
+    "Show the current weather's icon aside the metric" : {
+
+    },
+    "Show units when displaying temperature" : {
+
+    },
     "Sourced from  Weather" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Données provenant de la météo  Weather"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Daten von  Weather"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Données provenant de la météo  Weather"
           }
         },
         "pl" : {
@@ -553,16 +560,16 @@
     "Sunday" : {
       "extractionState" : "manual",
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dimancher"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sonntag"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dimancher"
           }
         },
         "pl" : {
@@ -581,16 +588,16 @@
     },
     "Sunrise" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Levée du soleil"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sonnenaufgang"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Levée du soleil"
           }
         },
         "pl" : {
@@ -609,16 +616,16 @@
     },
     "Sunset" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Coucher du soleil"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sonnenuntergang"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coucher du soleil"
           }
         },
         "pl" : {
@@ -638,16 +645,16 @@
     "Thursday" : {
       "extractionState" : "manual",
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jeudi"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Donnerstag"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeudi"
           }
         },
         "pl" : {
@@ -667,16 +674,16 @@
     "Today" : {
       "extractionState" : "manual",
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aujourd'hui"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heute"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aujourd'hui"
           }
         },
         "pl" : {
@@ -696,16 +703,16 @@
     "Tuesday" : {
       "extractionState" : "manual",
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mardi"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dienstag"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mardi"
           }
         },
         "pl" : {
@@ -724,16 +731,16 @@
     },
     "Two seconds..." : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Un moment svp..."
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gib’ uns noch ein paar Sekunden…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un moment svp..."
           }
         },
         "pl" : {
@@ -752,16 +759,16 @@
     },
     "Use 12-hour time format" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Format de l'heure : 12h"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zeige die Zeit im 12-Stunden-Format an"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Format de l'heure : 12h"
           }
         },
         "pl" : {
@@ -780,16 +787,16 @@
     },
     "Use Celsius instead of Fahrenheit" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Utiliser les dégrées Celsius au lieu de Fahrenheit"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nutze als Temperatureinheit Celsius statt Fahrenheit"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utiliser les dégrées Celsius au lieu de Fahrenheit"
           }
         },
         "pl" : {
@@ -808,16 +815,16 @@
     },
     "UV Index" : {
       "localizations" : {
-         "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Index UV"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "UV-Index"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Index UV"
           }
         },
         "pl" : {
@@ -836,16 +843,16 @@
     },
     "We're fetching your current weather" : {
       "localizations" : {
-         "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recherche des données météorologiques actuelles"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wir laden die Wetterdaten"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recherche des données météorologiques actuelles"
           }
         },
         "pl" : {
@@ -864,16 +871,16 @@
     },
     "We're having some troubles" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nous avons quelques problémes"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Es gibt ein paar Probleme"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nous avons quelques problémes"
           }
         },
         "pl" : {
@@ -893,16 +900,16 @@
     "Wednesday" : {
       "extractionState" : "manual",
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mercredi"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mittwoch"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mercredi"
           }
         },
         "pl" : {
