@@ -17,6 +17,7 @@ class WeatherUpdater: ObservableObject {
     @Published var locationPlacemark: CLPlacemark?
     @AppStorage("showIcon") var showIcon: Bool = true
     @AppStorage("IsCelsius") var isCelsius: Bool = true
+    @AppStorage("showUnits") var showUnits: Bool = true
     @AppStorage("showFeelsLike") var showFeelsLike: Bool = false
     @AppStorage("monocromeIcon") var monocromeIcon: Bool = false
     
@@ -121,9 +122,9 @@ class WeatherUpdater: ObservableObject {
             }
             switch menuBarInfo{
             case .temperature:
-                menubar.title = localisedTemp(tempInCelsius: weather.currentWeather.temperature.value, isCelsius: self.isCelsius)
+                menubar.title = localisedTemp(tempInCelsius: weather.currentWeather.temperature.value, isCelsius: self.isCelsius, showUnits: self.showUnits)
             case .feelslike:
-                menubar.title = localisedTemp(tempInCelsius: weather.currentWeather.apparentTemperature.value, isCelsius: self.isCelsius)
+                menubar.title = localisedTemp(tempInCelsius: weather.currentWeather.apparentTemperature.value, isCelsius: self.isCelsius, showUnits: self.showUnits)
             case .chanceOfPerception:
                 menubar.title = precipitationChanceString
             }
