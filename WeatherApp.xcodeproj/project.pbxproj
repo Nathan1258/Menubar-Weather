@@ -8,11 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		D8499E742B63F12C0085E7AC /* BackgroundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8499E732B63F12C0085E7AC /* BackgroundManager.swift */; };
+		D84D8D862C4708AF002E29AB /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = D84D8D852C4708AF002E29AB /* RevenueCat */; };
+		D84D8D882C4708AF002E29AB /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = D84D8D872C4708AF002E29AB /* RevenueCatUI */; };
+		D84D8D8A2C470DD4002E29AB /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D8D892C470DCF002E29AB /* PurchaseManager.swift */; };
+		D84E20DD2C39656900330A46 /* CustomWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84E20DC2C39656100330A46 /* CustomWeatherModel.swift */; };
 		D89D294E29635571005CA6AB /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = D89D294D29635571005CA6AB /* LaunchAtLogin */; };
 		D8A961012960B17F00CC5D35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8A961002960B17F00CC5D35 /* Assets.xcassets */; };
+		D8A96D892C3E94DB00A90BBA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A96D882C3E94DB00A90BBA /* MainView.swift */; };
+		D8A96D8B2C3E954400A90BBA /* OpenWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A96D8A2C3E954400A90BBA /* OpenWeatherView.swift */; };
 		D8B8F4B82B63DC5500211C4F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D8B8F4B72B63DC5500211C4F /* Localizable.xcstrings */; };
 		D8BA2D7B2B63EF4E00B59E7F /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A960FC2960B17E00CC5D35 /* WeatherAppApp.swift */; };
-		D8BA2D7C2B63EF4E00B59E7F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836E00F2961EB8000283355 /* MainView.swift */; };
+		D8BA2D7C2B63EF4E00B59E7F /* AppleWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836E00F2961EB8000283355 /* AppleWeatherView.swift */; };
 		D8BA2D7D2B63EF4E00B59E7F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836E0122961FA8900283355 /* LocationManager.swift */; };
 		D8BA2D7E2B63EF4E00B59E7F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D2944296234F2005CA6AB /* Extensions.swift */; };
 		D8BA2D7F2B63EF4E00B59E7F /* IconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D294629625436005CA6AB /* IconManager.swift */; };
@@ -23,10 +29,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D836E00F2961EB8000283355 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		D836E00F2961EB8000283355 /* AppleWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleWeatherView.swift; sourceTree = "<group>"; };
 		D836E0122961FA8900283355 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D8499E732B63F12C0085E7AC /* BackgroundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundManager.swift; sourceTree = "<group>"; };
 		D8499E782B63F2F10085E7AC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D84D8D892C470DCF002E29AB /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		D84E20DC2C39656100330A46 /* CustomWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWeatherModel.swift; sourceTree = "<group>"; };
 		D89D2944296234F2005CA6AB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D89D294629625436005CA6AB /* IconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconManager.swift; sourceTree = "<group>"; };
 		D89D294A2963544D005CA6AB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -34,6 +42,8 @@
 		D8A960FC2960B17E00CC5D35 /* WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppApp.swift; sourceTree = "<group>"; };
 		D8A961002960B17F00CC5D35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8A961032960B17F00CC5D35 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D8A96D882C3E94DB00A90BBA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		D8A96D8A2C3E954400A90BBA /* OpenWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherView.swift; sourceTree = "<group>"; };
 		D8B8F4B72B63DC5500211C4F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		D8BA2D7A2B63EE7900B59E7F /* WeatherApp.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = WeatherApp.entitlements; sourceTree = "<group>"; };
 		D8E440E729E44EFC003544EA /* WeatherUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUpdater.swift; sourceTree = "<group>"; };
@@ -44,7 +54,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84D8D862C4708AF002E29AB /* RevenueCat in Frameworks */,
 				D89D294E29635571005CA6AB /* LaunchAtLogin in Frameworks */,
+				D84D8D882C4708AF002E29AB /* RevenueCatUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,18 +83,22 @@
 		D8A960FB2960B17E00CC5D35 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				D84D8D892C470DCF002E29AB /* PurchaseManager.swift */,
+				D84E20DC2C39656100330A46 /* CustomWeatherModel.swift */,
 				D8B8F4B72B63DC5500211C4F /* Localizable.xcstrings */,
 				D8A960FC2960B17E00CC5D35 /* WeatherAppApp.swift */,
 				D8A961002960B17F00CC5D35 /* Assets.xcassets */,
 				D8BA2D7A2B63EE7900B59E7F /* WeatherApp.entitlements */,
 				D8A961022960B17F00CC5D35 /* Preview Content */,
-				D836E00F2961EB8000283355 /* MainView.swift */,
+				D836E00F2961EB8000283355 /* AppleWeatherView.swift */,
 				D8499E732B63F12C0085E7AC /* BackgroundManager.swift */,
 				D836E0122961FA8900283355 /* LocationManager.swift */,
 				D89D2944296234F2005CA6AB /* Extensions.swift */,
 				D89D294629625436005CA6AB /* IconManager.swift */,
 				D89D294A2963544D005CA6AB /* SettingsView.swift */,
 				D8E440E729E44EFC003544EA /* WeatherUpdater.swift */,
+				D8A96D882C3E94DB00A90BBA /* MainView.swift */,
+				D8A96D8A2C3E954400A90BBA /* OpenWeatherView.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -113,6 +129,8 @@
 			name = WeatherApp;
 			packageProductDependencies = (
 				D89D294D29635571005CA6AB /* LaunchAtLogin */,
+				D84D8D852C4708AF002E29AB /* RevenueCat */,
+				D84D8D872C4708AF002E29AB /* RevenueCatUI */,
 			);
 			productName = WeatherApp;
 			productReference = D8A960F92960B17E00CC5D35 /* MenuBar Weather.app */;
@@ -148,6 +166,7 @@
 			mainGroup = D8A960F02960B17E00CC5D35;
 			packageReferences = (
 				D89D294C29635571005CA6AB /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+				D84D8D842C4708AF002E29AB /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
 			);
 			productRefGroup = D8A960FA2960B17E00CC5D35 /* Products */;
 			projectDirPath = "";
@@ -178,13 +197,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8BA2D7B2B63EF4E00B59E7F /* WeatherAppApp.swift in Sources */,
-				D8BA2D7C2B63EF4E00B59E7F /* MainView.swift in Sources */,
+				D8BA2D7C2B63EF4E00B59E7F /* AppleWeatherView.swift in Sources */,
 				D8BA2D7D2B63EF4E00B59E7F /* LocationManager.swift in Sources */,
+				D8A96D892C3E94DB00A90BBA /* MainView.swift in Sources */,
+				D8A96D8B2C3E954400A90BBA /* OpenWeatherView.swift in Sources */,
+				D84D8D8A2C470DD4002E29AB /* PurchaseManager.swift in Sources */,
 				D8BA2D7E2B63EF4E00B59E7F /* Extensions.swift in Sources */,
 				D8BA2D7F2B63EF4E00B59E7F /* IconManager.swift in Sources */,
 				D8499E742B63F12C0085E7AC /* BackgroundManager.swift in Sources */,
 				D8BA2D812B63EF4E00B59E7F /* SettingsView.swift in Sources */,
 				D8BA2D822B63EF4E00B59E7F /* WeatherUpdater.swift in Sources */,
+				D84E20DD2C39656900330A46 /* CustomWeatherModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +335,7 @@
 				CODE_SIGN_ENTITLEMENTS = WeatherApp/WeatherApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = 5Z7E3KB5S2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -328,8 +351,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 2024.1.1;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 2024.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ellisn.WeatherApp;
 				PRODUCT_NAME = "MenuBar Weather";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -345,7 +368,7 @@
 				CODE_SIGN_ENTITLEMENTS = WeatherApp/WeatherApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = 5Z7E3KB5S2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -361,8 +384,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 2024.1.1;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 2024.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ellisn.WeatherApp;
 				PRODUCT_NAME = "MenuBar Weather";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -394,6 +417,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D84D8D842C4708AF002E29AB /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 		D89D294C29635571005CA6AB /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
@@ -405,6 +436,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D84D8D852C4708AF002E29AB /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D84D8D842C4708AF002E29AB /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCat;
+		};
+		D84D8D872C4708AF002E29AB /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D84D8D842C4708AF002E29AB /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCatUI;
+		};
 		D89D294D29635571005CA6AB /* LaunchAtLogin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D89D294C29635571005CA6AB /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;

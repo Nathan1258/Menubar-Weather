@@ -4,6 +4,30 @@
     "%@%%" : {
 
     },
+    "account page" : {
+
+    },
+    "Add a new location" : {
+
+    },
+    "Already purchased?" : {
+
+    },
+    "API Key" : {
+
+    },
+    "Apple Weather integration allows allows a realtime, fuss-free, highly accurate 7-day forecast. Your purchase will help fund furter development and API costs. " : {
+
+    },
+    "Create an account at" : {
+
+    },
+    "Custom Weather provider" : {
+
+    },
+    "Customisation" : {
+
+    },
     "Dew Point" : {
       "localizations" : {
         "de" : {
@@ -61,6 +85,9 @@
         }
       }
     },
+    "Fetch your API Key from this page which should be around 31 characters long and paste below:" : {
+
+    },
     "Friday" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -90,6 +117,9 @@
         }
       }
     },
+    "General" : {
+
+    },
     "Go to GitHub Page" : {
       "localizations" : {
         "de" : {
@@ -118,7 +148,14 @@
         }
       }
     },
+    "Go to your" : {
+
+    },
+    "Guide me in using my own API key" : {
+
+    },
     "Hello" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -202,6 +239,9 @@
         }
       }
     },
+    "Make sure your WiFi and location services are on for this app and check your API key is correct in settings." : {
+
+    },
     "Make sure your WiFi and location services are on for this app." : {
       "localizations" : {
         "de" : {
@@ -229,6 +269,9 @@
           }
         }
       }
+    },
+    "Menubar Weather is a free, open source app with the option to integrate with Apple Weather for a small fee to cover API costs." : {
+
     },
     "Metric to display in menubar" : {
       "localizations" : {
@@ -287,6 +330,9 @@
         }
       }
     },
+    "Note: Using your own key will disable Apple Weather integration and you will only get a 3 day forcast opposed to 7 unless you get a paid key. If you have an active subscription for Apple Weather integration then you will need to manually cancel that within your App Store Settings." : {
+
+    },
     "Now" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -316,6 +362,27 @@
         }
       }
     },
+    "once signed up." : {
+
+    },
+    "Open Weather API Key" : {
+
+    },
+    "OR" : {
+
+    },
+    "Please note: This service is a third-party hence the accuracy and privacy can not be guaranteed" : {
+
+    },
+    "Purchase Apple Weather Integration" : {
+
+    },
+    "Purchase for %@/mo" : {
+
+    },
+    "Purchase for %@/yr" : {
+
+    },
     "Quit" : {
       "localizations" : {
         "de" : {
@@ -343,6 +410,9 @@
           }
         }
       }
+    },
+    "Restore purchase" : {
+
     },
     "Saturday" : {
       "extractionState" : "manual",
@@ -529,6 +599,9 @@
     "Show units when displaying temperature" : {
 
     },
+    "Sourced from Weather API" : {
+
+    },
     "Sourced from  Weather" : {
       "localizations" : {
         "de" : {
@@ -556,6 +629,24 @@
           }
         }
       }
+    },
+    "Step 1." : {
+
+    },
+    "Step 2." : {
+
+    },
+    "Step 3." : {
+
+    },
+    "Submit key" : {
+
+    },
+    "Subscribe for Apple Weather" : {
+
+    },
+    "Subscribe for Apple Weather Integration" : {
+
     },
     "Sunday" : {
       "extractionState" : "manual",
@@ -813,6 +904,9 @@
         }
       }
     },
+    "Use custom Weather API key" : {
+
+    },
     "UV Index" : {
       "localizations" : {
         "de" : {
@@ -897,6 +991,15 @@
         }
       }
     },
+    "Weather API" : {
+
+    },
+    "Weather API Guide" : {
+
+    },
+    "Weather API is a third-party service that you can integrate in this app to get free 3-day weather forecast." : {
+
+    },
     "Wednesday" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -925,6 +1028,12 @@
           }
         }
       }
+    },
+    "Welcome to Menubar Weather" : {
+
+    },
+    "You may either use your own Weather API's key which gives you free access to a 3-day realtime weather forecast or pay a small fee to use Apple Weather which will give you access to a 7-day realtime weather forecast and extra features." : {
+
     }
   },
   "version" : "1.0"

@@ -2,31 +2,27 @@
 //  MainView.swift
 //  WeatherApp
 //
-//  Created by Nathan Ellis on 01/01/2023.
+//  Created by Nathan Ellis on 10/07/2024.
 //
 
 import SwiftUI
 import WeatherKit
 import CoreLocation
-
-func localisedTemp(tempInCelsius: Double, isCelsius: Bool, showUnits: Bool) -> String{
-    if isCelsius {
-        return String(tempInCelsius).roundedTemp() + (showUnits ? "℃" : "°")
-    }
-    let fahrenheitTemp = (tempInCelsius * 1.8) + 32
-    return String(fahrenheitTemp).roundedTemp() + (showUnits ? "℉" : "°")
-}
+import RevenueCat
 
 struct MainView: View {
     
-    @StateObject private var locationManager = LocationManager()
+    @AppStorage("openWeather") var openWeather: Bool = false
     
+    @StateObject private var locationManager = LocationManager()
     @StateObject private var weatherUpdater: WeatherUpdater
+    @StateObject private var purchaseManager = PurchaseManager()
     
     init() {
         let locationManager = LocationManager()
+        let purchaseManager = PurchaseManager()
         _locationManager = StateObject(wrappedValue: locationManager)
-        _weatherUpdater = StateObject(wrappedValue: WeatherUpdater(locationManager: locationManager))
+        _weatherUpdater = StateObject(wrappedValue: WeatherUpdater(locationManager: locationManager, purchaseManager: purchaseManager))
     }
     
     @State var showSettings: Bool = false
@@ -34,360 +30,245 @@ struct MainView: View {
     @AppStorage("IsCelsius") var isCelsius: Bool = true
     @AppStorage("showUnits") var showUnits: Bool = true
     @AppStorage("showIcon") var showIcon: Bool = true
+    
+    @AppStorage("openedBefore") var openedBefore: Bool = false
+    @AppStorage("openWeatherAPIKey") var apiKey: String = ""
+    
+    @State var weatherAPIGuide: Bool = false
     @State var error: String = ""
     
     @State var previewNum: Int = 1
     
     var body: some View {
-        if showSettings{
-            SettingsView(showSettings: $showSettings)
+        if !purchaseManager.isSubscribed && (apiKey == "" || !openWeather){
+            if weatherAPIGuide{
+                Guide(weatherAPIGuide: $weatherAPIGuide)
+            }else{
+                WelcomeView(weatherAPIGuide: $weatherAPIGuide)
+                    .environmentObject(purchaseManager)
+            }
+        }else{
+            if openWeather{
+                OpenWeatherView()
+                    .environmentObject(locationManager)
+                    .environmentObject(weatherUpdater)
+            }else{
+                AppleWeatherView()
+                    .environmentObject(locationManager)
+                    .environmentObject(weatherUpdater)
+                    .onAppear(){
+                        weatherUpdater.fetchData()
+                    }
+            }
+        }
+    }
+}
+
+struct WelcomeView: View {
+    
+    @Binding var weatherAPIGuide: Bool
+    @State var purchase: Bool = false
+    @EnvironmentObject var purchaseManager: PurchaseManager
+    
+    var body: some View{
+        if purchase{
+            Subscribe(purchase: $purchase)
+                .environmentObject(purchaseManager)
         }else{
             VStack{
-                if error.isEmpty{
-                    if let weather = weatherUpdater.weather, let _ = weatherUpdater.hourlyWeather, let _ = weatherUpdater.locationPlacemark{
-                        ZStack{
-                            if showBackground{
-                                GetBackground(condition: weather.currentWeather.condition, isDaylight: weather.currentWeather.isDaylight).ignoresSafeArea()
-                            }
-                            VStack{
-                                Top(weather: $weatherUpdater.weather, hourlyWeather: $weatherUpdater.hourlyWeather ,locationPlacemark: $weatherUpdater.locationPlacemark)
-                                    .padding()
-                                Divider()
-                                    .padding(.horizontal)
-                                HourlyForcast(weather: $weatherUpdater.weather, hourlyWeather: $weatherUpdater.hourlyWeather)
-                                    .padding()
-                                Divider()
-                                    .padding(.horizontal)
-                                WeeklyForcast(weather: $weatherUpdater.weather)
-                                    .padding()
-                                Divider()
-                                    .padding(.horizontal)
-                                Bottom(weather: $weatherUpdater.weather, showSettings: $showSettings)
-                                    .frame(maxWidth: .infinity)
-                                    .padding(.top, 12)
-                                    .padding(.horizontal, 12)
-                                Button(action: {
-                                    guard let url = URL(string: "https://weatherkit.apple.com/legal-attribution.html") else {return}
-                                    NSWorkspace.shared.open(url)
-                                }){
-                                    Text("Sourced from  Weather")
-                                        .font(.caption)
-                                        .foregroundColor(.white)
-                                }.buttonStyle(.link)
-                                    .padding(.bottom)
-                            }
-                            .frame(width: 400)
-                        }
-                        .frame(width: 400)
-                    }else{
-                        Spacer()
-                        VStack{
-                            Text("Two seconds...")
-                                .font(.largeTitle)
-                                .bold()
-                            Text("We're fetching your current weather")
-                                .font(.subheadline)
-                                .bold()
-                            ProgressView()
-                            
-                        }
-                        .frame(width: 400, height: 400)
-                        .padding()
+                Image("mostlyclear")
+                    .resizable()
+                    .frame(width: 100, height: 75)
+                Text("Welcome to Menubar Weather")
+                    .font(.largeTitle)
+                    .bold()
+                Text("Menubar Weather is a free, open source app with the option to integrate with Apple Weather for a small fee to cover API costs.")
+                    .font(.callout)
+                    .multilineTextAlignment(.center)
+                    .bold()
+                    .padding(.bottom)
+                Text("You may either use your own Weather API's key which gives you free access to a 3-day realtime weather forecast or pay a small fee to use Apple Weather which will give you access to a 7-day realtime weather forecast and extra features.")
+                    .font(.callout)
+                    .multilineTextAlignment(.center)
+                
+                VStack{
+                    Button(action: {
+                        weatherAPIGuide.toggle()
+                    }){
+                        Text("Guide me in using my own API key")
                     }
-                }else{
-                    Spacer()
-                    VStack{
-                        Text("We're having some troubles")
-                            .font(.largeTitle)
-                            .bold()
-                        Text("Make sure your WiFi and location services are on for this app.")
-                            .font(.subheadline)
-                            .bold()
+                    .background(.white)
+                    .cornerRadius(4)
+                    
+                    Button(action: {
+                        purchase.toggle()
+                    }){
+                        Text("Subscribe for Apple Weather")
                     }
-                    .frame(width: 400, height: 400)
-                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(4)
                 }
-            }.task {
-                weatherUpdater.fetchData()
             }
+            .frame(width: 400, height: 400)
+            .padding(.horizontal)
         }
     }
 }
 
-
-struct TaskId: Equatable{
-    var location: CLLocation?
-    var showIcon: Bool
-    var currentWeather: CurrentWeather?
-}
-
-struct Top: View{
+struct Subscribe: View{
     
-    @Binding var weather: Weather?
-    @Binding var hourlyWeather: Forecast<HourWeather>?
-    @Binding var locationPlacemark: CLPlacemark?
-    
-    @AppStorage("IsCelsius") var isCelsius: Bool = true
-    @AppStorage("showUnits") var showUnits: Bool = true
+    @Binding var purchase: Bool
+    @EnvironmentObject var purchaseManager: PurchaseManager
+    @AppStorage("openedBefore") var openedBefore: Bool = true
     
     var body: some View{
-        HStack(alignment: .center){
-            VStack(alignment: .leading){
-                Text(locationPlacemark!.locality ?? "Unknown")
-                    .foregroundColor(.white)
-                    .font(.title)
-                    .bold()
-                Text(locationPlacemark!.country ?? "Unknown")
-                    .foregroundColor(.white)
-                    .font(.subheadline)
-                    .opacity(0.6)
-                Spacer()
-                Text(weather!.currentWeather.condition.description)
-                    .foregroundColor(.white)
+        VStack(alignment: .leading){
+            HStack(alignment: .center){
+                Button(action: {
+                    purchase.toggle()
+                }){
+                    Image(systemName: "chevron.left")
+                }
+                Text("Purchase Apple Weather Integration")
                     .font(.title2)
                     .bold()
-            }.padding(.top, 8)
+            }
+            Text("Apple Weather integration allows allows a realtime, fuss-free, highly accurate 7-day forecast. Your purchase will help fund furter development and API costs. ")
             Spacer()
-            VStack(alignment: .trailing){
-                HStack{
-                    Text(localisedTemp(tempInCelsius: weather!.currentWeather.temperature.value, isCelsius: isCelsius, showUnits: showUnits))
-                        .foregroundColor(.white)
-                        .font(.title)
-                        .bold()
-                        .onTapGesture {
-                            isCelsius.toggle()
+            VStack(alignment: .center){
+                Spacer()
+                VStack{
+                    if purchaseManager.currentOffering == .annual{
+                        Button(action: {
+                            purchaseManager.purchase(purchaseType: .annual)
+                        }){
+                            Text("Purchase for \(purchaseManager.annualPrice)/yr")
                         }
-                    GetIcon(condition: weather!.currentWeather.condition, isDaylight: weather!.currentWeather.isDaylight)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 65, height: 50)
-                        .onTapGesture {
-                            let weatherAppURL = URL(fileURLWithPath: "/System/Applications/Weather.app")
-                            NSWorkspace.shared.open(weatherAppURL)
+                        .background(.white)
+                        .cornerRadius(4)
+                    }else{
+                        Button(action: {
+                            purchaseManager.purchase(purchaseType: .monthly)
+                        }){
+                            Text("Purchase for \(purchaseManager.monthlyPrice)/mo")
                         }
+                        .background(.white)
+                        .cornerRadius(4)
+                    }
                 }
                 Spacer()
-                HStack(spacing:6){
-                    Text("Feels like")
-                    Text(localisedTemp(tempInCelsius: weather!.currentWeather.apparentTemperature.value, isCelsius: isCelsius, showUnits: showUnits))
+                HStack{
+                    line
+                    Text("OR")
+                        .font(.title3)
+                        .bold()
+                    line
                 }
-                .foregroundColor(.white)
-                .font(.title3)
-                .bold()
-                .padding(.trailing, 7)
+                Spacer()
+                VStack(alignment: .center){
+                    Text("Already purchased?")
+                    Button(action: {
+                        purchaseManager.restorePurchases()
+                    }){
+                        Text("Restore purchase")
+                    }
+                    .background(.white)
+                    .cornerRadius(4)
+                }
+                Spacer()
             }
-        }
-    }
-}
-
-// MARK: Hourly View
-struct HourlyForcast: View{
-    
-    @Binding var weather: Weather?
-    @Binding var hourlyWeather: Forecast<HourWeather>?
-    @AppStorage("IsCelsius") var isCelsius: Bool = true
-    @AppStorage("showUnits") var showUnits: Bool = true
-    
-    var body: some View{
-        HStack(spacing: 20){
-            ForEach((hourlyWeather?.forecast.prefix(7))!, id: \.self.date){ hour in
-                HourlyForecastItem(time: hour.date, temp: localisedTemp(tempInCelsius: hour.temperature.value, isCelsius: isCelsius, showUnits: showUnits), weather: weather!, condition: hour.condition)
-            }
-        }
-    }
-}
-
-struct HourlyForecastItem: View {
-    
-    var time: Date
-    var temp: String
-    var weather: Weather
-    var condition: WeatherCondition
-    @AppStorage("Is24Hours") var is24Hours: Bool = false
-    
-    var body: some View {
-        VStack {
-            Text(isCurrentHour ? NSLocalizedString("Now", comment: "") : formattedTime)
-                .foregroundColor(.white)
-                .font(.callout.monospacedDigit())
-                .frame(maxWidth: .infinity)
-            GetIcon(condition: condition, isDaylight: weather.currentWeather.isDaylight)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 35, height: 35)
-            Text(temp)
-                .foregroundColor(.white)
-                .font(.callout.monospacedDigit())
-                .frame(maxWidth: .infinity)
-        }
-    }
-    
-    var isCurrentHour: Bool {
-        Calendar.current.component(.hour, from: Date()) == Calendar.current.component(.hour, from: time)
-    }
-    
-    var formattedTime: String {
-        is24Hours ? convertTo12HourFormat(time) : format24HourTime(time)
-    }
-    
-    func convertTo12HourFormat(_ time: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "ha"
-        return formatter.string(from: time).lowercased()
-    }
-    
-    func format24HourTime(_ time: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        return formatter.string(from: time)
-    }
-}
-
-
-// MARK: Weekly View
-struct WeeklyForcast: View{
-    
-    @Binding var weather: Weather?
-    @AppStorage("IsCelsius") var isCelsius: Bool = true
-    @AppStorage("showUnits") var showUnits: Bool = true
-    
-    var body: some View{
-        VStack(spacing: 16){
-            ForEach(weather!.dailyForecast.forecast.prefix(7), id: \.self.date){ day in
-                WeeklyForcastItem(day: day.date.dayOfWeek(), tempHigh: localisedTemp(tempInCelsius: day.highTemperature.value, isCelsius: isCelsius, showUnits: showUnits), tempLow: localisedTemp(tempInCelsius: day.lowTemperature.value, isCelsius: isCelsius, showUnits: showUnits), condition: day.condition, weather: weather!)
-            }
-        }
-    }
-}
-struct WeeklyForcastItem: View{
-    
-    var day: String
-    var tempHigh: String
-    var tempLow: String
-    var condition: WeatherCondition
-    var weather: Weather
-    
-    var body: some View{
-        HStack{
-            Text(Date().dayOfWeek() == day ? NSLocalizedString("Today", comment: "") : day)
-                .foregroundColor(.white)
-                .font(.headline)
-                .bold()
             Spacer()
-            Text(tempHigh)
-                .foregroundColor(.white)
-            Text(tempLow)
-                .foregroundColor(.white)
-                .opacity(0.6)
-            GetIcon(condition: condition, isDaylight: weather.currentWeather.isDaylight)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 30, height: 30)
         }
+        .frame(width: 400, height: 400)
+        .padding()
     }
 }
 
-// MARK: Extra Info
-struct Bottom: View{
+var line: some View {
+    VStack { Divider().background(.black) }.padding(12)
+}
+
+struct Guide: View{
     
-    @Binding var weather: Weather?
-    @Binding var showSettings: Bool
-    @AppStorage("IsCelsius") var isCelsius: Bool = true
-    @AppStorage("Is24Hours") var is24Hours: Bool = false
+    @Binding var weatherAPIGuide: Bool
+    @AppStorage("openedBefore") var openedBefore: Bool = false
+    @AppStorage("openWeatherAPIKey") var apiKey: String = ""
+    @AppStorage("openWeather") var openWeather: Bool = false
     
     var body: some View{
-        VStack(spacing: 16){
-            HStack(spacing: 16) {
-                VStack(spacing: 12) {
-                    Text(weather!.currentWeather.uvIndex.value.description)
-                        .foregroundColor(.white)
-                        .bold()
-                    Text("UV Index")
-                        .foregroundColor(.white)
-                        .opacity(0.6)
-                        .lineLimit(1)
-                }
-                VStack(spacing: 12) {
-                    Text(String(Int(weather!.currentWeather.dewPoint.value)))
-                        .foregroundColor(.white)
-                        .bold()
-                    Text("Dew Point")
-                        .foregroundColor(.white)
-                        .opacity(0.6)
-                        .lineLimit(1)
-                }
-                VStack(spacing: 12) {
-                    Text("\(String(Int((Double(weather!.currentWeather.humidity.description) ?? 0.0)*100)))%")
-                        .foregroundColor(.white)
-                        .bold()
-                    Text("Humidity")
-                        .foregroundColor(.white)
-                        .opacity(0.6)
-                        .lineLimit(1)
-                }
-                VStack(spacing: 12) {
-                    Text(dateToTime(date: weather!.dailyForecast.first?.sun.sunrise, is24Hours: is24Hours))
-                        .foregroundColor(.white)
-                        .bold()
-                    Text("Sunrise")
-                        .foregroundColor(.white)
-                        .opacity(0.6)
-                        .lineLimit(1)
-                }
-                VStack(spacing: 12) {
-                    Text(dateToTime(date: weather!.dailyForecast.first?.sun.sunset, is24Hours: is24Hours))
-                        .foregroundColor(.white)
-                        .bold()
-                    Text("Sunset")
-                        .foregroundColor(.white)
-                        .opacity(0.6)
-                        .lineLimit(1)
-                    
-                }
-            }.minimumScaleFactor(0.5)
-            
-            
-            HStack{
+        VStack(alignment: .leading){
+            HStack(alignment: .center){
                 Button(action: {
-                    showSettings.toggle()
+                    weatherAPIGuide.toggle()
                 }){
-                    Text("Settings")
+                    Image(systemName: "chevron.left")
+                }
+                Text("Weather API Guide")
+                    .font(.largeTitle)
+                    .bold()
+            }
+            Text("Please note: This service is a third-party hence the accuracy and privacy can not be guaranteed")
+                .font(.callout)
+            Spacer()
+            VStack(spacing: 12){
+                Text("Weather API is a third-party service that you can integrate in this app to get free 3-day weather forecast.")
+                    .multilineTextAlignment(.leading)
+                    .font(.callout)
+                VStack(alignment: .leading){
+                    Text("Step 1.").bold()
+                    HStack(spacing: 2){
+                        Text("Create an account at")
+                        Text("Weather API")
+                            .foregroundColor(.blue)
+                            .onTapGesture {
+                                if let url = URL(string: "https://www.weatherapi.com/signup.aspx") {
+                                    NSWorkspace.shared.open(url)
+                                }
+                            }
+                        Spacer()
+                    }
+                }
+                VStack(alignment: .leading){
+                    Text("Step 2.").bold()
+                    HStack(spacing: 2){
+                        Text("Go to your")
+                        Text("account page")
+                            .foregroundColor(.blue)
+                            .onTapGesture {
+                                if let url = URL(string: "https://www.weatherapi.com/my/") {
+                                    NSWorkspace.shared.open(url)
+                                }
+                            }
+                        Text("once signed up.")
+                        Spacer()
+                    }
+                }
+                VStack(alignment: .leading){
+                    Text("Step 3.").bold()
+                    HStack(spacing: 2){
+                        Text("Fetch your API Key from this page which should be around 31 characters long and paste below:")
+                        Spacer()
+                    }
+                }
+                TextField("API Key", text: $apiKey)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal)
+                    .autocorrectionDisabled()
+                    .disableAutocorrection(true)
+                Button(action: {
+                    openWeather = true
+                    weatherAPIGuide = false
+                    openedBefore = true
+                }){
+                    Text("Submit key")
                 }
                 .background(Color.white)
                 .cornerRadius(4)
-                
-                Button(action: {
-                    NSApplication.shared.terminate(nil)
-                }){
-                    Text("Quit")
-                }
-                .background(Color.white)
-                .cornerRadius(4)
+                Spacer()
             }
         }
+        .frame(width: 400, height: 400)
+        .padding()
     }
 }
 
-func dateToTime(date: Date?, is24Hours: Bool) -> String{
-    let formatter = DateFormatter()
-    formatter.dateFormat = is24Hours ? "hh:mma" : "HH:mm"
-    if let date = date{
-        let currentTime = formatter.string(from: date)
-        return currentTime
-    }
-    return ""
-    
-}
-
-struct Preview: View{
-    var body: some View{
-        Text("Hello")
-    }
-}
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        //        MainView()
-        Preview()
-    }
-}
