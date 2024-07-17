@@ -17,9 +17,9 @@ struct WeatherAppApp: App {
     @State var menuImage: String = "hourglass"
     
     init(){
-        let revenueCatAPI = ProcessInfo.processInfo.environment["revenue_cat"]!
+//        let revenueCatAPI = ProcessInfo.processInfo.environment["revenue_cat"]!
         Purchases.logLevel = .error
-        Purchases.configure(withAPIKey: revenueCatAPI)
+        Purchases.configure(withAPIKey: "appl_jvRbANRnDOAikeiqotJolfNeluc")
     }
     
     var body: some Scene {

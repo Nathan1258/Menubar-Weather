@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    " - " : {
+
+    },
     "%@%%" : {
 
     },
@@ -120,6 +123,9 @@
     "General" : {
 
     },
+    "GitHub link" : {
+
+    },
     "Go to GitHub Page" : {
       "localizations" : {
         "de" : {
@@ -151,7 +157,7 @@
     "Go to your" : {
 
     },
-    "Guide me in using my own API key" : {
+    "Guide me to use this app for free" : {
 
     },
     "Hello" : {
@@ -372,6 +378,9 @@
 
     },
     "Please note: This service is a third-party hence the accuracy and privacy can not be guaranteed" : {
+
+    },
+    "Privacy Policy" : {
 
     },
     "Purchase Apple Weather Integration" : {
@@ -732,6 +741,9 @@
           }
         }
       }
+    },
+    "Terms of use" : {
+
     },
     "Thursday" : {
       "extractionState" : "manual",

@@ -40,7 +40,7 @@ struct MainView: View {
     @State var previewNum: Int = 1
     
     var body: some View {
-        if !purchaseManager.isSubscribed && (apiKey == "" || !openWeather){
+        if true {//!purchaseManager.isSubscribed && (apiKey == "" || !openWeather){
             if weatherAPIGuide{
                 Guide(weatherAPIGuide: $weatherAPIGuide)
             }else{
@@ -95,7 +95,7 @@ struct WelcomeView: View {
                     Button(action: {
                         weatherAPIGuide.toggle()
                     }){
-                        Text("Guide me in using my own API key")
+                        Text("Guide me to use this app for free")
                     }
                     .background(.white)
                     .cornerRadius(4)
@@ -178,6 +178,34 @@ struct Subscribe: View{
                 Spacer()
             }
             Spacer()
+            VStack{
+                Text("GitHub link")
+                    .foregroundStyle(.blue)
+                    .onTapGesture {
+                        if let url = URL(string: "https://github.com/Nathan1258/Menubar-Weather") {
+                            NSWorkspace.shared.open(url)
+                        }
+                    }
+                HStack{
+                    Spacer()
+                    Text("Terms of use")
+                        .foregroundStyle(.blue)
+                        .onTapGesture {
+                            if let url = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/") {
+                                NSWorkspace.shared.open(url)
+                            }
+                        }
+                    Text(" - ")
+                    Text("Privacy Policy")
+                        .foregroundStyle(.blue)
+                        .onTapGesture {
+                            if let url = URL(string: "https://github.com/Nathan1258/Menubar-Weather/blob/main/Privacy-Policy.md") {
+                                NSWorkspace.shared.open(url)
+                            }
+                        }
+                    Spacer()
+                }
+            }
         }
         .frame(width: 400, height: 400)
         .padding()
