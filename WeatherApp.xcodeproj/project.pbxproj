@@ -351,7 +351,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 2024.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ellisn.WeatherApp;
 				PRODUCT_NAME = "MenuBar Weather";
@@ -384,7 +384,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 2024.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ellisn.WeatherApp;
 				PRODUCT_NAME = "MenuBar Weather";
