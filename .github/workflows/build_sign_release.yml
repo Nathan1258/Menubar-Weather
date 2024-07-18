@@ -34,11 +34,6 @@ jobs:
       run: |
         xcodebuild -project WeatherApp.xcodeproj -scheme WeatherApp -configuration Release -archivePath $PWD/build/WeatherApp.xcarchive archive
 
-    - name: List archive contents for debugging
-      run: |
-        echo "Listing archive contents..."
-        ls -R $PWD/build/WeatherApp.xcarchive
-
     - name: Import certificate
       run: |
         echo $MACOS_CERTIFICATE | base64 --decode > certificate.p12
@@ -47,13 +42,10 @@ jobs:
         security unlock-keychain -p "$MACOS_CI_KEYCHAIN_PWD" build.keychain
         security import certificate.p12 -k build.keychain -P "$MACOS_CERTIFICATE_PWD" -T /usr/bin/codesign
         security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$MACOS_CI_KEYCHAIN_PWD" build.keychain
-        security list-keychains  # Debug: list available keychains
-        security find-identity -v  # Debug: list available identities
-        security find-certificate -c "$MACOS_CERTIFICATE_NAME"  # Debug: check if certificate is available
 
     - name: Codesign app bundle
       run: |
-        /usr/bin/codesign --force -s "$MACOS_CERTIFICATE_NAME" --options runtime $PWD/build/WeatherApp.xcarchive/Products/Applications/WeatherApp.app -v
+        /usr/bin/codesign --force -s "$MACOS_CERTIFICATE_NAME" --options runtime $PWD/build/WeatherApp.xcarchive/Products/Applications/MenuBar\ Weather.app -v
 
     - name: Export the app
       run: |
@@ -64,13 +56,13 @@ jobs:
     - name: Notarize app bundle
       run: |
         xcrun notarytool store-credentials "notarytool-profile" --apple-id "$PROD_MACOS_NOTARIZATION_APPLE_ID" --team-id "$PROD_MACOS_NOTARIZATION_TEAM_ID" --password "$PROD_MACOS_NOTARIZATION_PWD"
-        ditto -c -k --keepParent "$PWD/build/WeatherApp.app" "notarization.zip"
+        ditto -c -k --keepParent "$PWD/build/MenuBar\ Weather.app" "notarization.zip"
         xcrun notarytool submit "notarization.zip" --keychain-profile "notarytool-profile" --wait
-        xcrun stapler staple "$PWD/build/WeatherApp.app"
+        xcrun stapler staple "$PWD/build/MenuBar\ Weather.app"
 
     - name: Zip app bundle for release
       run: |
-        ditto -c -k --keepParent "$PWD/build/WeatherApp.app" "$PWD/build/WeatherApp.app.zip"
+        ditto -c -k --keepParent "$PWD/build/MenuBar\ Weather.app" "$PWD/build/MenuBar\ Weather.app.zip"
 
     - name: Create release
       id: create_release
@@ -89,11 +81,12 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: $PWD/build/WeatherApp.app.zip
-        asset_name: WeatherApp.app.zip
+        asset_path: $PWD/build/MenuBar\ Weather.app.zip
+        asset_name: MenuBar\ Weather.app.zip
         asset_content_type: application/zip
 
     - name: Cleanup keychain
       if: always()
       run: |
         security delete-keychain build.keychain
+        
