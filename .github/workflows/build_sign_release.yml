@@ -49,8 +49,6 @@ jobs:
 
     - name: Export the app
       run: |
-        sed -i '' "s/__TEAM_ID__/${{ secrets.PROD_MACOS_TEAM_ID }}/" ExportOptions.plist
-        cat ExportOptions.plist  # Check if the replacement was successful
         xcodebuild -exportArchive -archivePath $PWD/build/WeatherApp.xcarchive -exportPath $PWD/build -exportOptionsPlist ExportOptions.plist
 
     - name: Notarize app bundle
