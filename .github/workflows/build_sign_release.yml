@@ -30,15 +30,16 @@ jobs:
         LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
         echo "LATEST_TAG=$LATEST_TAG" >> $GITHUB_ENV
 
-    - name: Set up Ruby
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: '2.7'
+    # - name: Set up Ruby
+    #   uses: ruby/setup-ruby@v1
+    #   with:
+    #     ruby-version: '3.3'
+    #     bundler-cache: true
 
-    - name: Install dependencies
-      run: |
-        gem install bundler
-        bundle install
+    # - name: Install dependencies
+    #   run: |
+    #     gem install bundler
+    #     bundle install
 
     - name: Build the app
       run: |
