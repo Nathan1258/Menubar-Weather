@@ -47,7 +47,7 @@ jobs:
 
     - name: Export the app
       run: |
-        sed -i '' 's/__TEAM_ID__/$PROD_MACOS_TEAM_ID/' ExportOptions.plist
+        sed -i '' "s/__TEAM_ID__/$PROD_MACOS_TEAM_ID/" ExportOptions.plist
         xcodebuild -exportArchive -archivePath $PWD/build/WeatherApp.xcarchive -exportPath $PWD/build -exportOptionsPlist ExportOptions.plist
 
     - name: Codesign app bundle
