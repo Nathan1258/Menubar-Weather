@@ -67,6 +67,9 @@ jobs:
       run: |
         ditto -c -k --keepParent "$PWD/build/MenuBar Weather.app" "$PWD/build/MenuBar Weather.app.zip"
 
+    - name: List files in build directory
+      run: ls -R 
+
     - name: Create release
       id: create_release
       uses: actions/create-release@v1
