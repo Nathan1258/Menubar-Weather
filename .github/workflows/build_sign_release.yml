@@ -65,7 +65,7 @@ jobs:
 
     - name: Zip app bundle for release
       run: |
-        ditto -c -k --keepParent "$PWD/build/MenuBar Weather.app" "$PWD/build/MenuBar Weather.app.zip"
+        ditto -c -k --keepParent "$PWD/build/MenuBar Weather.app" "$PWD/build/MenuBar-Weather.app.zip"
         ls -l "$PWD/build"
 
     - name: Create release
@@ -85,7 +85,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./build/MenuBar\ Weather.app.zip
+        asset_path: $PWD/build/MenuBar-Weather.app.zip
         asset_name: "MenuBar Weather.app.zip"
         asset_content_type: application/zip
 
