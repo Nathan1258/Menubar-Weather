@@ -57,7 +57,7 @@ jobs:
         PROD_MACOS_NOTARIZATION_TEAM_ID: ${{ secrets.PROD_MACOS_NOTARIZATION_TEAM_ID }}
         PROD_MACOS_NOTARIZATION_PWD: ${{ secrets.PROD_MACOS_NOTARIZATION_PWD }}
       run: |
-        xcrun notarytool store-credentials --keychain-profile "notarytool-profile" --apple-id "$PROD_MACOS_NOTARIZATION_APPLE_ID" --team-id "$PROD_MACOS_NOTARIZATION_TEAM_ID" --password "$PROD_MACOS_NOTARIZATION_PWD"
+        xcrun notarytool store-credentials "notarytool-profile" --apple-id "$PROD_MACOS_NOTARIZATION_APPLE_ID" --team-id "$PROD_MACOS_NOTARIZATION_TEAM_ID" --password "$PROD_MACOS_NOTARIZATION_PWD"
         ditto -c -k --keepParent "$PWD/build/MenuBar Weather.app" "notarization.zip"
         xcrun notarytool submit "notarization.zip" --keychain-profile "notarytool-profile" --wait
         xcrun stapler staple "$PWD/build/MenuBar Weather.app"
