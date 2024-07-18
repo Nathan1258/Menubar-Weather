@@ -209,6 +209,7 @@
 
     },
     "Launch MenuBar Weather at login" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

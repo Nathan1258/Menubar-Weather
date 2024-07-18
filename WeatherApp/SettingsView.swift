@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import LaunchAtLogin
+//import LaunchAtLogin
 
 enum MenuBarInfo: String, CaseIterable {
     case temperature = "Temperature"
@@ -67,7 +67,7 @@ struct SettingsView: View {
                 Group{
                     Text("General")
                         .font(.title)
-                    LaunchAtLogin.Toggle{ Text("Launch MenuBar Weather at login")}
+//                    LaunchAtLogin.Toggle{ Text("Launch MenuBar Weather at login")}
                     Toggle("Use 12-hour time format", isOn: $is24Hours)
                     Toggle("Show monochrome icons", isOn: $monocromeIcon)
                 }
