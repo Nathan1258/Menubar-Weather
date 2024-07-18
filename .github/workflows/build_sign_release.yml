@@ -34,6 +34,11 @@ jobs:
       run: |
         xcodebuild -project WeatherApp.xcodeproj -scheme WeatherApp -configuration Release -archivePath $PWD/build/WeatherApp.xcarchive archive
 
+    - name: List archive contents for debugging
+      run: |
+        echo "Listing archive contents..."
+        ls -R $PWD/build/WeatherApp.xcarchive
+
     - name: Import certificate
       run: |
         echo $MACOS_CERTIFICATE | base64 --decode > certificate.p12
