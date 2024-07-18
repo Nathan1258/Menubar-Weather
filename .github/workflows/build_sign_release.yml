@@ -1,0 +1,92 @@
+name: Build, Sign, Notarize, and Release macOS App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    env:
+      MACOS_CERTIFICATE: ${{ secrets.PROD_MACOS_CERTIFICATE }}
+      MACOS_CERTIFICATE_PWD: ${{ secrets.PROD_MACOS_CERTIFICATE_PWD }}
+      MACOS_CERTIFICATE_NAME: ${{ secrets.PROD_MACOS_CERTIFICATE_NAME }}
+      MACOS_CI_KEYCHAIN_PWD: ${{ secrets.PROD_MACOS_CI_KEYCHAIN_PWD }}
+      PROD_MACOS_NOTARIZATION_APPLE_ID: ${{ secrets.PROD_MACOS_NOTARIZATION_APPLE_ID }}
+      PROD_MACOS_NOTARIZATION_TEAM_ID: ${{ secrets.PROD_MACOS_NOTARIZATION_TEAM_ID }}
+      PROD_MACOS_TEAM_ID: ${{ secrets.PROD_MACOS_NOTARIZATION_TEAM_ID }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Get the latest tag
+      id: git_tag
+      run: |
+        LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+        echo "LATEST_TAG=$LATEST_TAG" >> $GITHUB_ENV
+
+    - name: Set up Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.7'
+
+    - name: Install dependencies
+      run: |
+        gem install bundler
+        bundle install
+
+    - name: Build the app
+      run: |
+        xcodebuild -project WeatherApp.xcodeproj -scheme WeatherApp -configuration Release -archivePath $PWD/build/WeatherApp.xcarchive archive
+
+    - name: Export the app
+      run: |
+        sed -i '' 's/__TEAM_ID__/$PROD_MACOS_TEAM_ID/' ExportOptions.plist
+        xcodebuild -exportArchive -archivePath $PWD/build/WeatherApp.xcarchive -exportPath $PWD/build -exportOptionsPlist ExportOptions.plist
+
+    - name: Codesign app bundle
+      run: |
+        echo $MACOS_CERTIFICATE | base64 --decode > certificate.p12
+        security create-keychain -p "$MACOS_CI_KEYCHAIN_PWD" build.keychain 
+        security default-keychain -s build.keychain
+        security unlock-keychain -p "$MACOS_CI_KEYCHAIN_PWD" build.keychain
+        security import certificate.p12 -k build.keychain -P "$MACOS_CERTIFICATE_PWD" -T /usr/bin/codesign
+        security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$MACOS_CI_KEYCHAIN_PWD" build.keychain
+        /usr/bin/codesign --force -s "$MACOS_CERTIFICATE_NAME" --options runtime $PWD/build/WeatherApp.app -v
+
+    - name: Notarize app bundle
+      run: |
+        xcrun notarytool store-credentials "notarytool-profile" --apple-id "$PROD_MACOS_NOTARIZATION_APPLE_ID" --team-id "$PROD_MACOS_NOTARIZATION_TEAM_ID" --password "$PROD_MACOS_NOTARIZATION_PWD"
+        ditto -c -k --keepParent "$PWD/build/WeatherApp.app" "notarization.zip"
+        xcrun notarytool submit "notarization.zip" --keychain-profile "notarytool-profile" --wait
+        xcrun stapler staple "$PWD/build/WeatherApp.app"
+
+    - name: Zip app bundle for release
+      run: |
+        ditto -c -k --keepParent "$PWD/build/WeatherApp.app" "$PWD/build/WeatherApp.app.zip"
+
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.LATEST_TAG }}
+        release_name: Release ${{ env.LATEST_TAG }}
+        draft: false
+        prerelease: false
+
+    - name: Upload release asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: $PWD/build/WeatherApp.app.zip
+        asset_name: WeatherApp.app.zip
+        asset_content_type: application/zip
