@@ -8,7 +8,6 @@
 import SwiftUI
 import WeatherKit
 import CoreLocation
-import RevenueCat
 
 struct MainView: View {
     
@@ -16,13 +15,11 @@ struct MainView: View {
     
     @StateObject private var locationManager = LocationManager()
     @StateObject private var weatherUpdater: WeatherUpdater
-    @StateObject private var purchaseManager = PurchaseManager()
     
     init() {
         let locationManager = LocationManager()
-        let purchaseManager = PurchaseManager()
         _locationManager = StateObject(wrappedValue: locationManager)
-        _weatherUpdater = StateObject(wrappedValue: WeatherUpdater(locationManager: locationManager, purchaseManager: purchaseManager))
+        _weatherUpdater = StateObject(wrappedValue: WeatherUpdater(locationManager: locationManager))
     }
     
     @State var showSettings: Bool = false
@@ -40,26 +37,16 @@ struct MainView: View {
     @State var previewNum: Int = 1
     
     var body: some View {
-        if true {//!purchaseManager.isSubscribed && (apiKey == "" || !openWeather){
+        if apiKey == ""{
             if weatherAPIGuide{
                 Guide(weatherAPIGuide: $weatherAPIGuide)
             }else{
                 WelcomeView(weatherAPIGuide: $weatherAPIGuide)
-                    .environmentObject(purchaseManager)
             }
         }else{
-            if openWeather{
-                OpenWeatherView()
-                    .environmentObject(locationManager)
-                    .environmentObject(weatherUpdater)
-            }else{
-                AppleWeatherView()
-                    .environmentObject(locationManager)
-                    .environmentObject(weatherUpdater)
-                    .onAppear(){
-                        weatherUpdater.fetchData()
-                    }
-            }
+            OpenWeatherView()
+                .environmentObject(locationManager)
+                .environmentObject(weatherUpdater)
         }
     }
 }
@@ -67,153 +54,47 @@ struct MainView: View {
 struct WelcomeView: View {
     
     @Binding var weatherAPIGuide: Bool
-    @State var purchase: Bool = false
-    @EnvironmentObject var purchaseManager: PurchaseManager
     
     var body: some View{
-        if purchase{
-            Subscribe(purchase: $purchase)
-                .environmentObject(purchaseManager)
-        }else{
+        VStack{
+            Image("mostlyclear")
+                .resizable()
+                .frame(width: 100, height: 75)
+            Text("Welcome to Menubar Weather")
+                .font(.largeTitle)
+                .bold()
+            Text("Menubar Weather is a free, open source app with the option to integrate with Apple Weather for a small fee to cover API costs.")
+                .font(.callout)
+                .multilineTextAlignment(.center)
+                .bold()
+                .padding(.bottom)
+            Text("You may either use your own Weather API's key which gives you free access to a 3-day realtime weather forecast or download the app from the App store and pay a small fee to use Apple Weather which will give you access to a 7-day realtime weather forecast and extra features.")
+                .font(.callout)
+                .multilineTextAlignment(.center)
+            
             VStack{
-                Image("mostlyclear")
-                    .resizable()
-                    .frame(width: 100, height: 75)
-                Text("Welcome to Menubar Weather")
-                    .font(.largeTitle)
-                    .bold()
-                Text("Menubar Weather is a free, open source app with the option to integrate with Apple Weather for a small fee to cover API costs.")
-                    .font(.callout)
-                    .multilineTextAlignment(.center)
-                    .bold()
-                    .padding(.bottom)
-                Text("You may either use your own Weather API's key which gives you free access to a 3-day realtime weather forecast or pay a small fee to use Apple Weather which will give you access to a 7-day realtime weather forecast and extra features.")
-                    .font(.callout)
-                    .multilineTextAlignment(.center)
-                
-                VStack{
-                    Button(action: {
-                        weatherAPIGuide.toggle()
-                    }){
-                        Text("Guide me to use this app for free")
-                    }
-                    .background(.white)
-                    .cornerRadius(4)
-                    
-                    Button(action: {
-                        purchase.toggle()
-                    }){
-                        Text("Subscribe for Apple Weather")
-                    }
-                    .background(Color.white)
-                    .cornerRadius(4)
-                }
-            }
-            .frame(width: 400, height: 400)
-            .padding(.horizontal)
-        }
-    }
-}
-
-struct Subscribe: View{
-    
-    @Binding var purchase: Bool
-    @EnvironmentObject var purchaseManager: PurchaseManager
-    @AppStorage("openedBefore") var openedBefore: Bool = true
-    
-    var body: some View{
-        VStack(alignment: .leading){
-            HStack(alignment: .center){
                 Button(action: {
-                    purchase.toggle()
+                    weatherAPIGuide.toggle()
                 }){
-                    Image(systemName: "chevron.left")
+                    Text("Guide me to use this app for free")
                 }
-                Text("Purchase Apple Weather Integration")
-                    .font(.title2)
-                    .bold()
-            }
-            Text("Apple Weather integration allows allows a realtime, fuss-free, highly accurate 7-day forecast. Your purchase will help fund furter development and API costs. ")
-            Spacer()
-            VStack(alignment: .center){
-                Spacer()
-                VStack{
-                    if purchaseManager.currentOffering == .annual{
-                        Button(action: {
-                            purchaseManager.purchase(purchaseType: .annual)
-                        }){
-                            Text("Purchase for \(purchaseManager.annualPrice)/yr")
-                        }
-                        .background(.white)
-                        .cornerRadius(4)
-                    }else{
-                        Button(action: {
-                            purchaseManager.purchase(purchaseType: .monthly)
-                        }){
-                            Text("Purchase for \(purchaseManager.monthlyPrice)/mo")
-                        }
-                        .background(.white)
-                        .cornerRadius(4)
+                .background(.white)
+                .cornerRadius(4)
+                
+                Button(action: {
+                    if let url = URL(string: "https://apps.apple.com/gb/app/menubar-weather/id1662381447") {
+                        NSWorkspace.shared.open(url)
                     }
+                }){
+                    Text("Install App Store version and use Apple Weather")
                 }
-                Spacer()
-                HStack{
-                    line
-                    Text("OR")
-                        .font(.title3)
-                        .bold()
-                    line
-                }
-                Spacer()
-                VStack(alignment: .center){
-                    Text("Already purchased?")
-                    Button(action: {
-                        purchaseManager.restorePurchases()
-                    }){
-                        Text("Restore purchase")
-                    }
-                    .background(.white)
-                    .cornerRadius(4)
-                }
-                Spacer()
-            }
-            Spacer()
-            VStack{
-                Text("GitHub link")
-                    .foregroundStyle(.blue)
-                    .onTapGesture {
-                        if let url = URL(string: "https://github.com/Nathan1258/Menubar-Weather") {
-                            NSWorkspace.shared.open(url)
-                        }
-                    }
-                HStack{
-                    Spacer()
-                    Text("Terms of use")
-                        .foregroundStyle(.blue)
-                        .onTapGesture {
-                            if let url = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/") {
-                                NSWorkspace.shared.open(url)
-                            }
-                        }
-                    Text(" - ")
-                    Text("Privacy Policy")
-                        .foregroundStyle(.blue)
-                        .onTapGesture {
-                            if let url = URL(string: "https://github.com/Nathan1258/Menubar-Weather/blob/main/Privacy-Policy.md") {
-                                NSWorkspace.shared.open(url)
-                            }
-                        }
-                    Spacer()
-                }
+                .background(Color.white)
+                .cornerRadius(4)
             }
         }
         .frame(width: 400, height: 400)
-        .padding()
+        .padding(.horizontal)
     }
-}
-
-var line: some View {
-    VStack { Divider().background(.black) }.padding(12)
 }
 
 struct Guide: View{

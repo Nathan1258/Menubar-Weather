@@ -7,20 +7,12 @@
 
 import SwiftUI
 import CoreLocation
-import WeatherKit
-import RevenueCat
 
 @main
 struct WeatherAppApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @State var menuTitle: String = "..."
     @State var menuImage: String = "hourglass"
-    
-    init(){
-//        let revenueCatAPI = ProcessInfo.processInfo.environment["revenue_cat"]!
-        Purchases.logLevel = .error
-        Purchases.configure(withAPIKey: "appl_jvRbANRnDOAikeiqotJolfNeluc")
-    }
     
     var body: some Scene {
         WindowGroup{

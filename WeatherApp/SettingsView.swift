@@ -87,28 +87,24 @@ struct SettingsView: View {
                 Group{
                     Text("Custom Weather provider")
                         .font(.title)
-//                    Text("Using your own Weather API key will allow you to manually specify multiple locations.")
-//                        .multilineTextAlignment(.leading)
-//                        .fixedSize(horizontal: false, vertical: true)
-//                        .font(.callout)
-                    Text("Note: Using your own key will disable Apple Weather integration and you will only get a 3 day forcast opposed to 7 unless you get a paid key. If you have an active subscription for Apple Weather integration then you will need to manually cancel that within your App Store Settings.")
-                        .multilineTextAlignment(.leading)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .font(.caption)
-                    Toggle("Use custom Weather API key", isOn: $openWeather)
-                    if openWeather{
-                        SecureField(text: $apiKey, label: {
-                            Text("Open Weather API Key")
-                        })
-                        Button(action: {
-                            openWeather = false
-                        }){
-                            Text("Subscribe for Apple Weather Integration")
-                        }
-//                        Text("Locations")
-//                            .font(.title)
-//                        LocationSelection(locations: locations, selectedLocation: $selectedLocation, newLocation: $newLocation)
+                    Text("API Key")
+                        .font(.callout)
+                        .bold()
+                    HStack(spacing: 5){
+                        Text("You can find your API key on your")
+                            .font(.caption)
+                            .fixedSize(horizontal: false, vertical: true)
+                        Text("Weather API account page")
+                            .foregroundStyle(.blue)
+                            .font(.caption)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .onTapGesture {
+                                openURL("https://www.weatherapi.com/my/")
+                            }
                     }
+                    SecureField(text: $apiKey, label: {
+                        Text("Weather API Key")
+                    })
                 }
                 Spacer()
             }.padding()

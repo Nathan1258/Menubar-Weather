@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    " - " : {
-
-    },
     "%@%%" : {
 
     },
@@ -13,13 +10,7 @@
     "Add a new location" : {
 
     },
-    "Already purchased?" : {
-
-    },
     "API Key" : {
-
-    },
-    "Apple Weather integration allows allows a realtime, fuss-free, highly accurate 7-day forecast. Your purchase will help fund furter development and API costs. " : {
 
     },
     "Create an account at" : {
@@ -123,9 +114,6 @@
     "General" : {
 
     },
-    "GitHub link" : {
-
-    },
     "Go to GitHub Page" : {
       "localizations" : {
         "de" : {
@@ -217,6 +205,9 @@
         }
       }
     },
+    "Install App Store version and use Apple Weather" : {
+
+    },
     "Launch MenuBar Weather at login" : {
       "localizations" : {
         "de" : {
@@ -249,6 +240,7 @@
 
     },
     "Make sure your WiFi and location services are on for this app." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -336,9 +328,6 @@
         }
       }
     },
-    "Note: Using your own key will disable Apple Weather integration and you will only get a 3 day forcast opposed to 7 unless you get a paid key. If you have an active subscription for Apple Weather integration then you will need to manually cancel that within your App Store Settings." : {
-
-    },
     "Now" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -371,25 +360,7 @@
     "once signed up." : {
 
     },
-    "Open Weather API Key" : {
-
-    },
-    "OR" : {
-
-    },
     "Please note: This service is a third-party hence the accuracy and privacy can not be guaranteed" : {
-
-    },
-    "Privacy Policy" : {
-
-    },
-    "Purchase Apple Weather Integration" : {
-
-    },
-    "Purchase for %@/mo" : {
-
-    },
-    "Purchase for %@/yr" : {
 
     },
     "Quit" : {
@@ -419,9 +390,6 @@
           }
         }
       }
-    },
-    "Restore purchase" : {
-
     },
     "Saturday" : {
       "extractionState" : "manual",
@@ -612,6 +580,7 @@
 
     },
     "Sourced from  Weather" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -649,12 +618,6 @@
 
     },
     "Submit key" : {
-
-    },
-    "Subscribe for Apple Weather" : {
-
-    },
-    "Subscribe for Apple Weather Integration" : {
 
     },
     "Sunday" : {
@@ -741,9 +704,6 @@
           }
         }
       }
-    },
-    "Terms of use" : {
-
     },
     "Thursday" : {
       "extractionState" : "manual",
@@ -916,9 +876,6 @@
         }
       }
     },
-    "Use custom Weather API key" : {
-
-    },
     "UV Index" : {
       "localizations" : {
         "de" : {
@@ -1006,10 +963,16 @@
     "Weather API" : {
 
     },
+    "Weather API account page" : {
+
+    },
     "Weather API Guide" : {
 
     },
     "Weather API is a third-party service that you can integrate in this app to get free 3-day weather forecast." : {
+
+    },
+    "Weather API Key" : {
 
     },
     "Wednesday" : {
@@ -1044,7 +1007,10 @@
     "Welcome to Menubar Weather" : {
 
     },
-    "You may either use your own Weather API's key which gives you free access to a 3-day realtime weather forecast or pay a small fee to use Apple Weather which will give you access to a 7-day realtime weather forecast and extra features." : {
+    "You can find your API key on your" : {
+
+    },
+    "You may either use your own Weather API's key which gives you free access to a 3-day realtime weather forecast or download the app from the App store and pay a small fee to use Apple Weather which will give you access to a 7-day realtime weather forecast and extra features." : {
 
     }
   },
