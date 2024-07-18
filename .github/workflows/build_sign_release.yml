@@ -59,10 +59,7 @@ jobs:
       run: |
         xcrun notarytool store-credentials "notarytool-profile" --apple-id "$PROD_MACOS_NOTARIZATION_APPLE_ID" --team-id "$PROD_MACOS_NOTARIZATION_TEAM_ID" --password "$PROD_MACOS_NOTARIZATION_PWD"
         ditto -c -k --keepParent "$PWD/build/MenuBar Weather.app" "notarization.zip"
-        SUBMISSION_ID=$(xcrun notarytool submit "notarization.zip" --keychain-profile "notarytool-profile" --wait | grep 'id: ' | awk '{print $2}')
-        echo "Submission ID: $SUBMISSION_ID"
-        xcrun notarytool log "$SUBMISSION_ID" --keychain-profile "notarytool-profile"
-        # xcrun notarytool submit "notarization.zip" --keychain-profile "notarytool-profile" --wait
+        xcrun notarytool submit "notarization.zip" --keychain-profile "notarytool-profile" --wait
         xcrun stapler staple "$PWD/build/MenuBar Weather.app"
 
 
