@@ -22,7 +22,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0
+        fetch-depth: 0  # Fetch all history to get tags
 
     - name: Get the latest tag
       id: git_tag
@@ -30,26 +30,11 @@ jobs:
         LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
         echo "LATEST_TAG=$LATEST_TAG" >> $GITHUB_ENV
 
-    # - name: Set up Ruby
-    #   uses: ruby/setup-ruby@v1
-    #   with:
-    #     ruby-version: '3.3'
-    #     bundler-cache: true
-
-    # - name: Install dependencies
-    #   run: |
-    #     gem install bundler
-    #     bundle install
-
     - name: Build the app
       run: |
         xcodebuild -project WeatherApp.xcodeproj -scheme WeatherApp -configuration Release -archivePath $PWD/build/WeatherApp.xcarchive archive
 
-    - name: Export the app
-      run: |
-        xcodebuild -exportArchive -archivePath $PWD/build/WeatherApp.xcarchive -exportPath $PWD/build -exportOptionsPlist ExportOptions.plist
-
-    - name: Codesign app bundle
+    - name: Import certificate
       run: |
         echo $MACOS_CERTIFICATE | base64 --decode > certificate.p12
         security create-keychain -p "$MACOS_CI_KEYCHAIN_PWD" build.keychain 
@@ -57,7 +42,19 @@ jobs:
         security unlock-keychain -p "$MACOS_CI_KEYCHAIN_PWD" build.keychain
         security import certificate.p12 -k build.keychain -P "$MACOS_CERTIFICATE_PWD" -T /usr/bin/codesign
         security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$MACOS_CI_KEYCHAIN_PWD" build.keychain
-        /usr/bin/codesign --force -s "$MACOS_CERTIFICATE_NAME" --options runtime $PWD/build/WeatherApp.app -v
+        security list-keychains  # Debug: list available keychains
+        security find-identity -v  # Debug: list available identities
+        security find-certificate -c "$MACOS_CERTIFICATE_NAME"  # Debug: check if certificate is available
+
+    - name: Codesign app bundle
+      run: |
+        /usr/bin/codesign --force -s "$MACOS_CERTIFICATE_NAME" --options runtime $PWD/build/WeatherApp.xcarchive/Products/Applications/WeatherApp.app -v
+
+    - name: Export the app
+      run: |
+        sed -i '' "s/__TEAM_ID__/${{ secrets.PROD_MACOS_TEAM_ID }}/" ExportOptions.plist
+        cat ExportOptions.plist  # Check if the replacement was successful
+        xcodebuild -exportArchive -archivePath $PWD/build/WeatherApp.xcarchive -exportPath $PWD/build -exportOptionsPlist ExportOptions.plist
 
     - name: Notarize app bundle
       run: |
@@ -90,3 +87,8 @@ jobs:
         asset_path: $PWD/build/WeatherApp.app.zip
         asset_name: WeatherApp.app.zip
         asset_content_type: application/zip
+
+    - name: Cleanup keychain
+      if: always()
+      run: |
+        security delete-keychain build.keychain
