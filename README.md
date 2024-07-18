@@ -8,6 +8,9 @@ A beautiful, lightweight weather app that lives in your menubar to get simple we
 
 Menubar Weather is available [here](https://github.com/Nathan1258/Menubar-Weather/releases/) where you can use your own [Weather API](https://www.weatherapi.com) key to use the app for free, or the app is available on the [Mac App Store ](https://apps.apple.com/gb/app/menubar-weather/id1662381447) where you'll have to pay a small fee to integrate with Apple Weather for a realtime 7-day forecast plus lots of other features!
 
+## NOTE:
+
+If your app is stuck on "Two seconds, we're fetching your weather", make sure you have enabled location services for the app within Settings > Privacy & Security > Location Services
 
 
 ## Features
