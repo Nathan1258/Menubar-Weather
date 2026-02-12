@@ -89,8 +89,6 @@ struct OpenWeatherView: View {
                         }){
                             Text("Settings")
                         }
-                        .background(Color.white)
-                        .cornerRadius(4)
                     }
                     .frame(width: 400, height: 400)
                     .padding()
@@ -377,16 +375,12 @@ struct BottomCustomWeather: View{
                 }){
                     Text("Settings")
                 }
-                .background(Color.white)
-                .cornerRadius(4)
                 
                 Button(action: {
                     NSApplication.shared.terminate(nil)
                 }){
                     Text("Quit")
                 }
-                .background(Color.white)
-                .cornerRadius(4)
             }
         }
     }

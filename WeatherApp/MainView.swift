@@ -78,8 +78,6 @@ struct WelcomeView: View {
                 }){
                     Text("Guide me to use this app for free")
                 }
-                .background(.white)
-                .cornerRadius(4)
                 
                 Button(action: {
                     if let url = URL(string: "https://apps.apple.com/gb/app/menubar-weather/id1662381447") {
@@ -88,8 +86,6 @@ struct WelcomeView: View {
                 }){
                     Text("Install App Store version and use Apple Weather")
                 }
-                .background(Color.white)
-                .cornerRadius(4)
             }
         }
         .frame(width: 400, height: 400)

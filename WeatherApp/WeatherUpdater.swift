@@ -69,16 +69,53 @@ class WeatherUpdater: ObservableObject {
     
     func fetchOpenWeather(for location: CLLocation){
         guard let urlString =
-                "https://api.weatherapi.com/v1/forecast.json?key=\(apiKey)&q=\(location.coordinate.latitude),\(location.coordinate.longitude)&days=3&aqi=no&alerts=no".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return}
-        guard let url = URL(string: urlString) else {return}
+                "https://api.weatherapi.com/v1/forecast.json?key=\(apiKey)&q=\(location.coordinate.latitude),\(location.coordinate.longitude)&days=3&aqi=no&alerts=no".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            print("Error: Failed to encode URL")
+            DispatchQueue.main.async {
+                self.errorCustomWeather = true
+            }
+            return
+        }
+        guard let url = URL(string: urlString) else {
+            print("Error: Invalid URL")
+            DispatchQueue.main.async {
+                self.errorCustomWeather = true
+            }
+            return
+        }
         URLSession.shared.dataTask(with: url){ data, response, error in
-            guard error == nil,let data = data else {return}
+            if let error = error {
+                print("Error fetching weather data: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    self.errorCustomWeather = true
+                }
+                return
+            }
+            
+            guard let data = data else {
+                print("Error: No data received from API")
+                DispatchQueue.main.async {
+                    self.errorCustomWeather = true
+                }
+                return
+            }
+            
+            // Log the response for debugging
+            if let httpResponse = response as? HTTPURLResponse {
+                print("API Response Status Code: \(httpResponse.statusCode)")
+            }
+            
             DispatchQueue.main.async{
-            if let response = try? JSONDecoder().decode(CustomWeatherModel.self, from: data) {
+                do {
+                    let response = try JSONDecoder().decode(CustomWeatherModel.self, from: data)
                     self.CustomWeather = response
                     self.updateMenubarCustomWeather()
                     self.errorCustomWeather = false
-                }else{
+                } catch {
+                    print("Error decoding weather data: \(error)")
+                    if let jsonString = String(data: data, encoding: .utf8) {
+                        print("Response data: \(jsonString)")
+                    }
                     self.errorCustomWeather = true
                 }
             }
